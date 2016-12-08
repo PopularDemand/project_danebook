@@ -16,6 +16,7 @@ gem 'bootstrap-sass'
 gem 'faker'
 gem 'binding_of_caller'
 gem 'bcrypt', '~> 3.1.7'
+gem 'simple_form'
 
 group :development, :test do
   gem 'byebug', platform: :mri

@@ -1,1 +1,60 @@
-<h1>Welcome to users/show!</h1>
+<!-- Main Content -->
+<section class="profile">
+  <div class='page-title col-sm-12'>
+    <h1>About</h1>
+  </div>
+  
+  <main class='col-sm-12'>
+    <!-- Left column -->
+    <article class="col-sm-6">
+      <section class='basic-info'>
+        <h3>Basic Information</h3>
+        <table>
+          <tr>
+            <td class="table-label">Birthday:</td>
+            <td><%= @profile.birthday %></td>
+          </tr>
+          <tr>
+            <td class="table-label">College:</td>
+            <td><%= @profile.college %></td>
+          </tr>
+          <tr>
+            <td class="table-label">Hometown:</td>
+            <td><%= @profile.hometown %></td>
+          </tr>
+          <tr>
+            <td class="table-label">Currently Lives:</td>
+            <td><%= @profile.currently_lives %></td>
+          </tr>
+        </table>
+      </section><!-- basic info -->
+
+      <section class='contact-info'>
+        <h3>Contact Information</h3>
+        <table>
+          <tr>
+            <td class="table-label">Email:</td>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <td class="table-label">Telephone:</td>
+            <td><%= @profile.telephone %>7</td>
+          </tr>
+        </table>
+      </section> <!-- /contact-info -->
+    </article> <!-- /left column -->
+
+    <!-- Right column -->
+    <article class="col-sm-6">
+      <section class="words">
+        <h3>Words to Live By </h3>
+        <p><%= @profile.words_to_live_by %></p>
+      </section> <!-- words -->
+
+      <section class="about">
+        <h3>About Me </h3>
+        <p><%= @profile.about_me %></p>
+      </section> <!-- about -->
+    </article> <!-- /right column -->
+  </main>
+</section><!-- profile -->

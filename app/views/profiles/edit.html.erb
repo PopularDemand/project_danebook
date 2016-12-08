@@ -1,69 +1,73 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="hero-image">
-        <!-- <img class="profile-photo" src="img/harry_potter_small.jpg"> -->
-        <%= image_tag("harry_potter_small.jpg") %>
-        <div class="username">Harry Potter</div>
-      </div>
-      <nav class="profile-navigation-bar">
-        <div class="profile-photo-spacer"></div>
-        <div class="profile-navigation-item"><a href="#!">Timeline</a></div>
-        <div class="profile-navigation-item"><a href="#!">About</a></div>
-        <div class="profile-navigation-item"><a href="#!">Photos</a> <span class="badge">(123)</span></div>
-        <div class="profile-navigation-item"><a href="#!">Friends</a> <span class="badge">(542)</span></div>
-      </nav>
-    </div>
+<section class="profile">
+  <div class='page-title col-sm-12'>
+    <h1>Edit Profile</h1>
   </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-info">
-        <div class="panel-heading">Edit Profile</div>
-        <div class="row">
-            <div class="col-sm-5">
-              <h3>Basic Information</h3>
 
-              <table class="table">
-                <tr>
-                  <td>Birthday:</td>
-                  <td>July 31st, 1980</td>
-                </tr>
-                <tr>
-                  <td>College:</td>
-                  <td><input value="Hogwarts College"></td>
-                </tr>
-                <tr>
-                  <td>Hometown:</td>
-                  <td><input value="Godnick's Hollow, England"></td>
-                </tr>
-                <tr>
-                  <td>Currently Lives:</td>
-                  <td><input value="Godnick's Hollow, England"></td>
-                </tr>
-              </table>
-              <h3>Contact Information</h3>
-              <table class="table">
-                <tr>
-                  <td>Email:</td>
-                  <td>harry_potter@hogwarts.edu</td>
-                </tr>
-                <tr>
-                  <td>Telephone:</td>
-                  <td><input value="555-123-4567"></td>
-                </tr>
-              </table>
-            </div>
-            <div class="col-md-7">
-              <h3>Words to Live By</h3>
-              <textarea rows="5" cols="75">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dicta ab illo, voluptate impedit, laudantium libero maxime eveniet beatae nemo, aspernatur fugit in nesciunt sint ratione, sunt sed aliquam vitae.</textarea>
-              <h3>About Me</h3>
-              <textarea rows="10" cols="75">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere dolorem modi delectus, itaque reprehenderit explicabo excepturi similique veritatis dicta necessitatibus dignissimos voluptate cum sit tenetur mollitia consectetur deserunt accusantium minus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores quam, voluptate, saepe cum perspiciatis minima, corporis nemo accusantium maxime labore placeat veniam ea aliquam illum molestiae, facere maiores! Possimus, voluptatem.</textarea>
-            </div>
-          </div>
-      </div>
-    </div>
-  </div>
-</div>
+  <main class='col-sm-12'>
+    <!-- Left column -->
+    <%= simple_form_for [current_user, @profile] do |f| %>
+    <article class="col-sm-6">
+      <section class='basic-info'>
+        <h3>Basic Information</h3>
+        <table>
+          <tr>
+            <td class="table-label">Birthday:</td>
+            <td>
+              <%= f.input :birthday, label: false %>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-label">College:</td>
+            <td class='table-info'>
+            <%= f.input :college, label: false %>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-label">Hometown:</td>
+            <td class='table-info'>
+              <%= f.input :hometown, label: false %>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-label">Currently Lives:</td>
+            <td class='table-info'>
+              <%= f.input :currently_lives, label: false %>
+            </td>
+          </tr>
+        </table>
+      </section> <!-- /basic info -->
 
-</body>
-</html>
+      <section class='contact-info'>
+        <h3>Contact Information</h3>
+        <table>
+          <tr>
+            <td class="table-label">Email:</td>
+            <td>harry_potter@hogwarts.edu</td>
+          </tr>
+          <tr>
+            <td class="table-label">Telephone:</td>
+            <td class='table-info'>
+              <%= f.input :telephone, label: false %>
+            </td>
+          </tr>
+        </table>
+      </section> <!-- /contact info -->
+    </article><!-- /left column -->
+
+    <!-- Right column -->
+    <article class="col-sm-6">
+      <section class="words">
+        <h3>Words to Live By </h3>
+        <%= f.input :words_to_live_by, label: false %>
+      </section> <!-- /words -->
+
+      <section class="about">
+        <h3>About Me </h3>
+        <%= f.input :about_me, label: false %>
+      </section> <!-- /about -->
+    </article><!-- /right colum -->
+
+    <%= f.submit "Save Changes" %>
+    <% end %>
+  </main>
+</section> <!-- profile -->

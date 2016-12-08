@@ -12,7 +12,10 @@
     <%= render "shared/header" %>
     <%= render "shared/flash_messages" %>
 
-    
-    <%= yield %>
+    <div class="container">
+      <%= render "shared/jumbotron" %>
+      <%= yield %>
+    </div>
+
   </body>
 </html>
