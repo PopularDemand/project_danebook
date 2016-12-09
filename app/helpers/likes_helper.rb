@@ -1,5 +1,17 @@
 module LikesHelper
 
+  # TODO: "You" when current user likes
+  def current_likes(likable)
+    likes = likable.likes
+    if likes.size < 3 && likes.size > 0
+      names = likes.map { |like| like.liker.full_name }
+      "#{names.join(" and ")} like this post"
+    elsif likes.size > 2
+      names = likes[0...2].map { |like| like.liker.full_name }
+      "#{names.join(", ")} and #{pluralize((likes.size - 2), 'other')} like this post"
+    end
+  end
+
   def like_or_unlike(likable)
     # TODO refactor
       like = like_from_likable(likable)
