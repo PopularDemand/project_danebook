@@ -13,31 +13,34 @@
       <!-- Login form -->
       <div class="col-sm-5">
         <div id='navbar-form' class="navbar-collapse collapse">
-          <form action="" class='navbar-form navbar-right'>
-          <div class="col-sm-5">
-            <div class='form-group'>
-              <label for="email">Email</label>
-              <input type="text" placeholder='Email' class='form-control' id='email'>
+  
+          <%= form_tag login_path, class: 'navbar-form navbar-right' do %>
+            <div class="col-sm-5">
+              <div class='form-group'>
+                <%= label_tag :email, "Email:" %>
+                <%= text_field_tag :email, '', placeholder: "Email", class: 'form-control', id: 'email' %>
+              </div>
             </div>
-          </div>
-          <div class="col-sm-5">
-            <div class='form-group'>
-              <label for="password">Password</label>
-              <input type="password" placeholder='Password' class='form-control' id='password'>
+            
+            <div class="col-sm-5">
+              <div class='form-group'>
+                <%= label_tag :password, "Password:" %>
+                <%= password_field_tag :password, "", placeholder: "Password", class: "form-control", id: "password" %>
+              </div>
             </div>
-          </div>
-          <div class="col-sm-2">
-            <div class='form-group'>
-              <input type="submit" class='btn' value='Sign in'>
+            
+            <div class="col-sm-2">
+              <div class='form-group'>
+                <%= submit_tag "Login!", class: 'btn' %>
+              </div>
             </div>
-          </div>
-          </form>
+          <% end %>
         </div>
       </div> <!-- col-md-5 -->
     </div> <!-- row -->
   </div> <!-- /container -->
  </nav>
-
+    <%= render "shared/flash_messages" %>
   <main class="container">
     <div class="row">
 

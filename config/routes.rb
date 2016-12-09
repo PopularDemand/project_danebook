@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  delete 'logout' => 'sessions#destroy'
+  post 'login' => 'sessions#create'
+
   root "users#new"
   resources :users do
     resource :profile, except: [:new, :create, :destroy]
+    get 'timeline'
   end
 end

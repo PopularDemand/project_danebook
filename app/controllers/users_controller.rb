@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+  before_action :require_login, except: [:new, :create]
   before_action :set_user, only: [:show]
 
   def new
@@ -32,5 +33,12 @@ class UsersController < ApplicationController
 
     def set_user
       @user = User.find(params[:id])
+    end
+
+    def require_login
+      unless signed_in_user?
+        flash[:info] = "You must be signed in to access that page."
+        redirect_to new_user_path
+      end
     end
 end

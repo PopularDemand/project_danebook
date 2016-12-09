@@ -1,6 +1,10 @@
 class ProfilesController < ApplicationController
 
+  before_action :set_user, only: [:show, :edit]
+  before_action :set_profile, only: [:show]
+
   def edit
+    @user = current_user
     @profile = current_user.profile
   end
 
@@ -15,11 +19,24 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def show 
+  end
+
   private
 
     def strong_profile_params
       params.require(:profile).permit(:college, :hometown,
                                :currently_lives, :words_to_live_by,
                                :telephone, :about_me, :birthday, :sex)
+    end
+
+    def set_user
+      # Unhack this
+      user_id = params[:user_id] || params[:id]
+      @user = User.find(user_id) || current_user
+    end
+
+    def set_profile
+      @profile = @user.profile
     end
 end

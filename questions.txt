@@ -1,0 +1,3 @@
+how to check for @user -- in partials want to use @user only if not on current_user's profile. jumbotron line 2
+
+Bootstrap login form

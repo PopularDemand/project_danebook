@@ -6,6 +6,10 @@ body {
   font-family: "Comic Sans MS", sans-serif;
 }
 
+.flash-message {
+  margin-top: 40px;
+}
+
 // Top Nav
 
 .main-nav {
@@ -13,6 +17,10 @@ body {
   border-radius: 0;
   height: 40px;
   min-height: 0px;
+  div {
+    height: 40px;
+    display: inline-block;
+  }
   .navbar-brand {
     height: 25px;
     width: auto;
@@ -36,6 +44,16 @@ body {
       height: 24px;
       width: 350px;
       border-radius: 0;
+      padding: 2px;
+    }
+  }
+  .user-dropdown {
+    padding: 10px;
+    margin-right: 25px;
+    float: right;
+    text-align: center;
+    .navbar-nav {
+      margin: 0;
     }
   }
   .white-nav-text {
@@ -54,7 +72,7 @@ heading {
 
   .cover-image {
     margin-top: 25px;
-    background-image: url(../images/cover_image.jpg);
+    background-image: image-url("you.jpeg");
     background-size: cover;
     color: #fff;
     height: 320px;
@@ -173,6 +191,11 @@ heading {
       background-color: #ADD8E6;
       text-align: center;
       padding: 4px 12px;
+    }
+    &[aria-expanded='true'] {
+      background-color: #0054dd;
+      position: absolute;
+      right: 0px;
     }
   }
 }

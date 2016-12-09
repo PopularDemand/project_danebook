@@ -1,0 +1,30 @@
+<div class="row">
+<nav class="navbar navbar-fixed-top main-nav">
+  <a href="home.html" class="navbar-brand white-nav-text">
+    <%= image_tag("danish_flag.gif", options={}) %>
+    Danebook
+  </a>
+<div class="hidden-xs">
+  <form action="#" role='search' class='navbar-form search-bar'>
+    <div class="form-group">
+      <input type="text" class='form-control' placeholder='Search for users' disabled>
+    </div>
+  </form>
+</div>
+<div class="col-xs-3 navbar-right user-dropdown">
+  <ul class="dropdown navbar-right nav navbar-nav">
+    <a href="#" class="dropdown-toggle white-nav-text" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.full_name %> <span class="caret"></span></a>
+  <ul class="dropdown-menu">
+    <li>
+      <%= link_to "Edit Profile", edit_user_profile_path(current_user) %>
+    </li>
+    <li role="separator" class="divider"></li>
+    <li>
+      <%= link_to "Log out", logout_path, method: :delete %>
+    </li>
+  </ul>
+</div>
+  </ul>
+  <%#= link_to current_user.full_name, current_user, class: "navbar-text navbar-right white-nav-text"%>
+</nav>
+</div>

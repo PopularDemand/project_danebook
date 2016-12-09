@@ -2,29 +2,32 @@
   <!-- Jumbotron -->
   <section class="jumbotron cover-image">
     <div class="image-mask">
-      <!-- <img src="assets/images/harry_potter_small.jpg" alt="profile picture for user" class='profile-pic'>
-    </div> -->
-    <%= image_tag('harry_potter_small.jpg') %>
-    <h2 class='profile-name'>Harry Potter</h2>
+      <%= image_tag('doge.jpg') %>
+    </div>
+    <h2 class='profile-name'>
+      <%= user.full_name %>
+    </h2>
   </section>
 
   <!-- Mid Nav -->
-  <nav class='mid-nav'>
+  <div class="row">
+  <nav class='mid-nav col-xs-12'>
     <div class="mid-nav-padding"></div>
     <ul>
       <li>
-        <a href="timeline.html">Timeline</a>
+      <%= link_to "Timeline", '#' %>
       </li>
       <li>
-        <a href="about.html">About</a>
+        <%= link_to "About", user_profile_path(@user) %>
       </li>
       <li>
-        <a href="photos.html">Photos <span class="count-text">(123)</span></a>
+        <a href="#">Photos <span class="count-text">(123)</span></a>
       </li>
       <li class='current'>
-        <a href="friends.html">Friends <span class="count-text">(542)</span></a>
+        <a href="#">Friends <span class="count-text">(542)</span></a>
       </li>
     </ul>
-    <a href="about_edit.html" class='mid-nav-edit'>Edit Profile</a>
+    <%= render partial: 'shared/edit_profile_link', class: 'mid-nav-edit', locals: { user: user } %>
   </nav>
+  </div>
 </heading>

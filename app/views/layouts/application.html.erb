@@ -9,11 +9,13 @@
   </head>
 
   <body>
-    <%= render "shared/header" %>
+    <div class="container-fluid">
+    <%= render "shared/navbar" %>
+    </div>
     <%= render "shared/flash_messages" %>
 
     <div class="container">
-      <%= render "shared/jumbotron" %>
+      <%= render partial: "shared/jumbotron", locals: { user: user_from_params } %>
       <%= yield %>
     </div>
 
