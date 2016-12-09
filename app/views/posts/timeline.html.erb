@@ -2,15 +2,8 @@
   <main>
     <!-- Left column -->
     <article class="col-md-4 left-column">
-      <section class='about-info row'>
-        <h2>About</h2>
-        <div class="about-list">
-          <p><b>Birthday:</b> July 31st, 1980</p>
-          <p><b>Went to school at:</b> Hogwarts College</p>
-          <p><b>Hometown:</b> Godrick's Hollow, England</p>
-          <p><b>Currently Lives:</b> Godrick's Hollow, England</p>
-        </div>
-      </section> <!-- about -->
+
+    <%= render partial: 'about_panel', locals: { profile: @user.profile } %>
 
       <section class='timeline-photos row'>
         <h2>Photos</h2>
@@ -86,114 +79,6 @@
 
       <%= render partial: @posts, locals: { user: @user } %>
 
-      <section class="post row">
-        <div class="poster">
-          <%= image_tag('default_user.png') %>
-          <div class="post-details">
-            <a href="about.html">Harry Potter</a>
-            <p class='timestamp'>
-              Posted on Thursday 10/27/2016
-            </p>
-          </div>
-        </div>
-        <p class='post-text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere obcaecati soluta hic. Maiores harum necessitatibus obcaecati explicabo consectetur nam magnam, placeat cum atque. Suscipit minus doloribus illo, mollitia illum. Fugiat iste iure, eaque fugit consequuntur repellendus voluptates hic, nam nostrum harum quaerat voluptatem libero earum officiis necessitatibus vel vero deserunt explicabo mollitia? Eveniet officia aperiam, rem. Quis commodi eveniet officia unde temporibus error, nulla quo.</p>
-        <footer>
-          <div class="post-options">
-            <a href="#">Like</a>
-            <a href="#">Comment</a>
-            <a href="#" class="delete-post">Delete</a>
-          </div>
-        </footer>
-      </section> <!-- post -->
-
-      <section class="post liked-post row">
-        <div class="poster">
-          <%= image_tag('default_user.png') %>
-          <div class="post-details">
-            <a href="about.html">Harry Potter</a>
-            <p class='timestamp'>
-              Posted on Thursday 10/27/2016
-            </p>
-          </div>
-        </div>
-        <p class='post-text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere obcaecati soluta hic. Maiores harum necessitatibus obcaecati explicabo consectetur nam magnam, placeat cum atque. Suscipit minus doloribus illo, mollitia illum. Fugiat iste iure, eaque fugit consequuntur repellendus voluptates hic, nam nostrum harum quaerat voluptatem libero earum officiis necessitatibus vel vero deserunt explicabo mollitia? Eveniet officia aperiam, rem. Quis commodi eveniet officia unde temporibus error, nulla quo.</p>
-        <footer>
-          <div class="post-options">
-            <a href="#">Like</a>
-            <a href="#">Comment</a>
-            <a href="#" class="delete-post">Delete</a>
-          </div>
-          <p>
-            <a href="#">Hermione Granger</a> likes this.
-          </p>
-        </footer>
-      </section> <!-- liked post -->
-
-      <section class="post commented-post row">
-
-        <div class="poster">
-          <%= image_tag('default_user.png') %>
-          <div class="post-details">
-            <a href="about.html">Harry Potter</a>
-            <p class='timestamp'>
-              Posted on Thursday 10/27/2016
-            </p>
-          </div>
-        </div>
-        <p class='post-text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere obcaecati soluta hic. Maiores harum necessitatibus obcaecati explicabo consectetur nam magnam, placeat cum atque. Suscipit minus doloribus illo, mollitia illum. Fugiat iste iure, eaque fugit consequuntur repellendus voluptates hic, nam nostrum harum quaerat voluptatem libero earum officiis necessitatibus vel vero deserunt explicabo mollitia? Eveniet officia aperiam, rem. Quis commodi eveniet officia unde temporibus error, nulla quo.</p>
-        <footer>
-          <div class="post-options">
-            <a href="#">Unlike</a>
-            <a href="#">Comment</a>
-            <a href="#" class="delete-post">Delete</a>
-          </div>
-          <p>
-            You and <a href="#">Hermione Granger</a> and 3 others like this.
-          </p>
-        </footer>
-
-        <div class="comments">
-          <article class="comment">
-            <div class="commenter-image col-md-1">
-              <a href="#"><%= image_tag('default_user.png') %></a>
-            </div>
-            <div class='comment-text col-md-11'>
-              <p class='comment-meta'>
-                <a href="#">Ron Weasley</a> said on Thursday 10/27/2016:
-              </p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere obcaecati soluta hic. Maiores harum necessitatibus obcaecati explicabo consectetur nam magnam.</p>
-
-              <div class="comment-options">
-                <a href="#">Like</a>
-                <p class='comment-meta'>3 other people like this</p>
-              </div>
-            </div>
-          </article> <!-- /comment -->
-          <article class="comment">
-            <div class="commenter-image col-md-1">
-              <a href="#"><%= image_tag('default_user.png') %></a>
-            </div>
-            <div class='comment-text col-md-11'>
-              <p class='comment-meta'>
-                <a href="#">Harry Potter</a> said on Friday 10/28/2016:
-              </p>
-              <p>Lorem ipsum dolor sit amet?! Consectetur adipisicing elit!</p>
-              <div class="comment-options">
-                <a href="#">Like</a>
-                <p class='comment-meta'>13 other people like this</p>
-                <a href="#" class='delete-comment'>Delete</a>
-              </div>
-            </div>
-          </article> <!-- /comment -->
-          <article class="comment-form">
-            <form action="#">
-              <textarea name="new-comment" id="new-comment" rows="5" placeholder="Write a comment..."></textarea>
-              <a href="#">Cancel</a>
-              <input type="submit" value='Comment' class='submit-comment'>
-            </form>
-          </article>
-        </div><!-- comments -->
-      </section> <!-- commented post -->
     </article> <!-- /right column -->
   </main>
 </section> <!-- /timeline -->

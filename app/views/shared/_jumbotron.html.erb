@@ -2,7 +2,7 @@
   <!-- Jumbotron -->
   <section class="jumbotron cover-image">
     <div class="image-mask">
-      <%= image_tag('doge.jpg') %>
+      <%= image_tag(user.profile.profile_pic) %>
     </div>
     <h2 class='profile-name'>
       <%= user.full_name %>
@@ -15,10 +15,10 @@
     <div class="mid-nav-padding"></div>
     <ul>
       <li>
-      <%= link_to "Timeline", '#' %>
+      <%= link_to "Timeline", user_timeline_path(user) %>
       </li>
       <li>
-        <%= link_to "About", user_profile_path(@user) %>
+        <%= link_to "About", user_profile_path(user) %>
       </li>
       <li>
         <a href="#">Photos <span class="count-text">(123)</span></a>
