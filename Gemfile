@@ -18,6 +18,10 @@ gem 'binding_of_caller'
 gem 'bcrypt', '~> 3.1.7'
 gem 'simple_form'
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'jazz_fingers'
