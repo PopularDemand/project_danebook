@@ -47,6 +47,10 @@ class User < ApplicationRecord
     likable.liked_by(self)
   end
 
+  def unlike(likable)
+    Like.from_user_and_likable(self, likable)[0].destroy
+  end
+
   private
 
     def capitalize_name

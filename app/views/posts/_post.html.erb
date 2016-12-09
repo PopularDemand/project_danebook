@@ -13,12 +13,9 @@
   </p>
   <footer>
     <div class="post-options">
-      <a href="#">Like</a>
-      <a href="#">Comment</a>
-      <% if @user == current_user %>
-        <%= link_to "Delete", user_post_path(current_user, post), method: :delete, class: 'delete-post' %>
-      <% end %>
-      <!-- <a href="#" class="delete-post">Delete</a> -->
+
+      <%= render partial: 'post_footer', locals: { post: post, user: user } %>
+
     </div>
   </footer>
 </section>

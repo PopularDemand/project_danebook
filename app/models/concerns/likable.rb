@@ -14,4 +14,8 @@ module Likable
     self.likers << user
   end
 
+  def unliked_by(user)
+    self.likers.delete(user)
+  end
+
 end

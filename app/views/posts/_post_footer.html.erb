@@ -1,0 +1,9 @@
+<%= like_or_unlike(post) %>
+
+<%#= link_to "Like", post_likes_path(post), method: post %>
+<a href="#">Comment</a>
+<% if user == current_user %>
+  <%= link_to "Delete", post_path(post), method: :delete, class: 'delete-post' %>
+  <%# Anything gained? %>
+  <%#= link_to "Delete", user_post_path(current_user, post), method: :delete, class: 'delete-post' %>
+<% end %>
