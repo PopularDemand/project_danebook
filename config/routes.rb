@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   resources :users do
     resources :posts
     resource :profile, except: [:new, :create, :destroy]
-    get 'timeline' => 'posts#timeline'
+    get 'timeline', to: 'posts#timeline'
   end
 end
