@@ -42,6 +42,11 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def like(likable)
+    # redundant?
+    likable.liked_by(self)
+  end
+
   private
 
     def capitalize_name

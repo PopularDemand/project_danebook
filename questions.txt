@@ -1,3 +1,25 @@
 how to check for @user -- in partials want to use @user only if not on current_user's profile. jumbotron line 2
 
 Bootstrap login form
+
+
+
+
+
+
+
+
+likeable has likes - keep count
+
+like belongs to liker, classname user,
+     belongs to likeable, polymorphic
+
+user has many likes, foreignk liker_id
+     has many liked_posts, through likes, source :post
+
+post has many likes, as likeable, polymorphic
+     has many likers, through likes, source users
+
+
+user.like(likeable) -> likeable.increase_likes -> lkb.likes.create(user)
+user.unlike(likeable) -> likeable.decrease_likes -> lkb.likes.destroy(user)
