@@ -23,6 +23,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
+    flash[:info] = "\"#{@post.content}\"...? Super Deleted!"
     @post.destroy
     redirect_to user_timeline_path
   end
