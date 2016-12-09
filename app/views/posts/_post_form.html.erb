@@ -1,0 +1,16 @@
+<section class="submit-post row">
+  <h2>Post</h2>
+<!--   <form action="#">
+    <textarea name="new-post" id="new-post" rows="3" placeholder='Tell us something good.'></textarea>
+    <footer>
+      <input type="submit" value='Post' class='new-post-submit'>
+    </footer>
+  </form> -->
+  <%= simple_form_for [current_user, post] do |f| %>
+      <%= f.input :content, label: false,  placeholder: 'Tell us something good' %>
+      <footer>
+        <%= f.submit "Post", class: 'new-post-submit' %>
+      </footer>
+  <% end %>
+    
+</section>

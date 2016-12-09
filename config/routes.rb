@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   root "users#new"
   resources :users do
+    resources :posts
     resource :profile, except: [:new, :create, :destroy]
-    get 'timeline', to: 'posts#timeline'
+    get 'timeline' => 'posts#timeline'
   end
 end
