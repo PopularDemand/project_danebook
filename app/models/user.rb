@@ -1,8 +1,20 @@
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   has_secure_password
-  has_one :profile, dependent: :destroy, inverse_of: :user
-  has_many :posts, dependent: :destroy, foreign_key: :author_id
+
+  has_one :profile,
+          dependent: :destroy,
+          inverse_of: :user
+  has_many :posts,
+           dependent: :destroy,
+           foreign_key: :author_id
+  has_many :likes,
+           foreign_key: :liker_id
+  has_many :liked_posts,
+           through: :likes,
+           source: :likable,
+           source_type: "Post"
+
   accepts_nested_attributes_for :profile, reject_if: :all_blank
 
   validates :password, presence: true,
