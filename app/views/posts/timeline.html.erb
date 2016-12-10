@@ -8,26 +8,29 @@
       <section class='timeline-photos row'>
         <h2>Photos</h2>
         <div class="col-md-4">
-          <a href="#"><img src="assets/images/default_photo.png" alt="generic photo icon"></a>
-          <a href="#"><img src="assets/images/default_photo.png" alt="generic photo icon"></a>
-          <a href="#"><img src="assets/images/default_photo.png" alt="generic photo icon"></a>
+          <a href="#"><%= image_tag('default_photo.png') %></a>
+          <a href="#"><%= image_tag('default_photo.png') %></a>
+          <a href="#"><%= image_tag('default_photo.png') %></a>
         </div>
         <div class="col-md-4">
-          <a href="#"><img src="assets/images/default_photo.png" alt="generic photo icon"></a>
-          <a href="#"><img src="assets/images/default_photo.png" alt="generic photo icon"></a>
-          <a href="#"><img src="assets/images/default_photo.png" alt="generic photo icon"></a>
+          <a href="#"><%= image_tag('default_photo.png') %></a>
+          <a href="#"><%= image_tag('default_photo.png') %></a>
+          <a href="#"><%= image_tag('default_photo.png') %></a>
         </div>
         <div class="col-md-4">
-          <a href="#"><img src="assets/images/default_photo.png" alt="generic photo icon"></a>
-          <a href="#"><img src="assets/images/default_photo.png" alt="generic photo icon"></a>
-          <a href="#"><img src="assets/images/default_photo.png" alt="generic photo icon"></a>
+          <a href="#"><%= image_tag('default_photo.png') %></a>
+          <a href="#"><%= image_tag('default_photo.png') %></a>
+          <a href="#"><%= image_tag('default_photo.png') %></a>
         </div>
         <a href="photos.html">See More Photos</a>
       </section> <!-- /photos -->
 
       <section class='timeline-friends row'>
         <h2>Friends (542)</h2>
-        <div class="col-md-4">
+        
+        <%= render partial: "shared/friends", locals: { friends: @friends } %>
+
+<!--         <div class="col-md-4">
           <div class="friend-link">
             <a href="#">
               <img src="assets/images/default_user.png" alt="generic photo icon">
@@ -68,8 +71,8 @@
               <p>Ron Weasley</p>
             </a>
           </div>
-        </div>
-        <a href="friends.html">See More Friends</a>
+        </div> -->
+        <a href="#" class='col-md-12'>See More Friends</a>
       </section> <!-- /friends -->
     </article><!-- /left column -->
 

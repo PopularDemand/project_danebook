@@ -11,6 +11,3 @@ class Like < ApplicationRecord
   #    Like.where("likable_id = ? AND likable_type = ? AND liker_id = ?", likable.id, likable.class, user.id)
   # end
 end
-
-
-# Need to destroy the actual like on unlike

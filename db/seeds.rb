@@ -18,7 +18,7 @@ Post.destroy_all
 USER_NUM = 10
 POST_PER_USER = 5
 LIKES_PER_USER = 5
-P_PICS = ['dog.png', 'smile.png', 'woman.png', 'doge.jpg', 'harry_potter_small.jpg']
+P_PICS = ['dog.png', 'smile.png', 'woman.png', 'doge.jpg']
 
 USER_NUM.times do |i|
   user = User.create(

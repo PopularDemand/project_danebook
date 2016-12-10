@@ -13,10 +13,18 @@ class ApplicationController < ActionController::Base
     cookies.delete(:auth_token)
   end
 
+  # TODO: clean up repetition
   def require_logged_in_user
     unless signed_in_user?
       flash[:info] = "You must sign in to view that page."
       redirect_to new_user_path
+    end
+  end
+
+  def require_current_user
+    unless current_user.id.to_s == params[:id]
+      flash[:warning] = "NOT AUTHORIZED TO DO THAT, BUB"
+      redirect_to user_timeline_path
     end
   end
 

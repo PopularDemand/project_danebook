@@ -1,0 +1,14 @@
+<% friends.each do |friend| %>
+  <div class="col-md-4">
+    <div class="friend-link">
+<!--       <a href="#">
+        <img src="assets/images/default_user.png" alt="generic photo icon">
+        <p>Ron Weasley</p>
+      </a> -->
+      <%= link_to user_timeline_path(friends) do %>
+        <%= image_tag(friend.profile.profile_pic) %>
+        <p><%= friend.full_name %></p>
+      <% end %>
+    </div>
+  </div>
+<% end %>

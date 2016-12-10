@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   before_action :require_login, except: [:new, :create]
   before_action :set_user, only: [:show]
+  before_action :require_current_user, only: [:edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -39,6 +40,13 @@ class UsersController < ApplicationController
       unless signed_in_user?
         flash[:info] = "You must be signed in to access that page."
         redirect_to new_user_path
+      end
+    end
+
+    def require_current_user
+      unless current_user.id.to_s == params[:id]
+        flash[:warning] = "NOT AUTHORIZED TO DO THAT, BUB"
+        redirect_to user_timeline_path
       end
     end
 end

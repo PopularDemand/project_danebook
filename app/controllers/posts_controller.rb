@@ -1,13 +1,16 @@
 class PostsController < ApplicationController
 
-  def index
+  before_action :require_current_user, only: [:destroy]
 
+  def index
   end
 
   def timeline
     @user = User.find(params[:user_id])
     @posts = @user.posts.order(created_at: :desc)
     @post = Post.new
+    # TODO: lol
+    @friends = User.all.sample(9)
   end
 
   def create

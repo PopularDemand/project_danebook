@@ -2,27 +2,30 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   has_secure_password
 
-  has_one :profile,
-          dependent: :destroy,
-          inverse_of: :user
-  has_many :posts,
-           dependent: :destroy,
-           foreign_key: :author_id
-  has_many :likes,
-           foreign_key: :liker_id
-  has_many :liked_posts,
-           through: :likes,
-           source: :likable,
-           source_type: "Post"
+  has_one   :profile,
+            dependent: :destroy,
+            inverse_of: :user
+  has_many  :posts,
+            dependent: :destroy,
+            foreign_key: :author_id
+  has_many  :comments,
+            foreign_key: :author_id
+  has_many  :likes,
+            foreign_key: :liker_id
+  has_many  :liked_posts,
+            through: :likes,
+            source: :likable,
+            source_type: "Post"
 
   accepts_nested_attributes_for :profile, reject_if: :all_blank
 
-  validates :password, presence: true,
-                       allow_nil: true
+  validates :password,   presence: true,
+                         allow_nil: true
   validates :first_name, length: { maximum: 30 }
-  validates :last_name, length: { maximum: 30 }
-  validates :email, presence: true, length: { maximum: 255 },
-                    format: { with: VALID_EMAIL_REGEX }
+  validates :last_name,  length: { maximum: 30 }
+  validates :email,      presence: true, length: { maximum: 255 },
+                         format: { with: VALID_EMAIL_REGEX }
+  
   before_save :capitalize_name
 
 
@@ -43,7 +46,7 @@ class User < ApplicationRecord
   end
 
   def like(likable)
-    # redundant?
+    # TODO: redundant? used anywhere???
     likable.liked_by(self)
   end
 
