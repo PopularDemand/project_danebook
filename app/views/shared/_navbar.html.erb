@@ -1,9 +1,10 @@
 <div class="row">
 <nav class="navbar navbar-fixed-top main-nav">
-  <a href="home.html" class="navbar-brand white-nav-text">
+  <!-- <a href="home.html" class="navbar-brand white-nav-text"> -->
+  <%= link_to user_timeline_path(current_user), class: "navbar-brand white-nav-text" do %>
     <%= image_tag("danish_flag.gif", options={}) %>
     Danebook
-  </a>
+  <% end %>
 <div class="hidden-xs">
   <form action="#" role='search' class='navbar-form search-bar'>
     <div class="form-group">
