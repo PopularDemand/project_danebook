@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   def require_current_user
     unless current_user.id.to_s == params[:id]
       flash[:warning] = "NOT AUTHORIZED TO DO THAT, BUB"
-      redirect_to user_timeline_path
+      redirect_to user_timeline_pth(current_user)
     end
   end
 

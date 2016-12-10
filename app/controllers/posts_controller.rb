@@ -28,7 +28,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     flash[:info] = "\"#{@post.content}\"...? Super Deleted!"
     @post.destroy
-    redirect_to user_timeline_path
+    redirect_to user_timeline_path(current_user)
   end
 
 
@@ -36,5 +36,12 @@ class PostsController < ApplicationController
 
     def strong_post_params
       params.require(:post).permit(:content)
+    end
+
+    def require_current_user
+      unless current_user.id == Post.find(params[:id]).author_id
+        flash[:warning] = "NOT AUTHORIZED TO DO THAT, BUBb"
+        redirect_to user_timeline_path(current_user)
+      end
     end
 end
