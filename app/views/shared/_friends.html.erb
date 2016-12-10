@@ -6,7 +6,7 @@
         <p>Ron Weasley</p>
       </a> -->
       <%= link_to user_timeline_path(friends) do %>
-        <%= image_tag(friend.profile.profile_pic) %>
+        <%= image_tag('default-user.png') %>
         <p><%= friend.full_name %></p>
       <% end %>
     </div>
