@@ -5,9 +5,13 @@ class UsersController < ApplicationController
   before_action :require_current_user, only: [:edit, :update, :destroy]
 
   def new
-    @user = User.new
-    @profile = @user.build_profile
-    render :new, layout: "new_user"
+    if signed_in_user?
+      redirect_to user_timeline_path(current_user)
+    else
+      @user = User.new
+      @profile = @user.build_profile
+      render :new, layout: "new_user"
+    end
   end
 
   def create
