@@ -26,7 +26,7 @@
       </section> <!-- /photos -->
 
       <section class='timeline-friends row'>
-        <h2>Friends (542)</h2>
+        <h2>Friends <%= @friends.size %></h2>
         
         <%= render partial: "shared/friends", locals: { friends: @friends } %>
 

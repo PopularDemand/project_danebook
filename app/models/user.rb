@@ -96,6 +96,10 @@ class User < ApplicationRecord
     self.friends.include?(user)
   end
 
+  def friend_count
+    self.initiated_friendings.size + self.received_friendings.size
+  end
+
   private
 
     def capitalize_name
