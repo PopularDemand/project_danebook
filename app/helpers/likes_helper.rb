@@ -15,12 +15,13 @@ module LikesHelper
   def like_or_unlike(likable)
     # TODO refactor
       like = like_from_likable(likable)
+      type = likable.class.to_s.downcase
     if like.empty?
       # TODO: make this polymorphic
-      link_to "Like", post_likes_path(likable), method: :post
+      link_to 'Like', likable_likes_path(likable, :type => type), method: :post
     else
       # TODO: Way to just pass in like?
-      link_to "Unlike", post_like_path(likable, like), method: :delete
+      link_to "Unlike", likable_like_path(likable, like, :type => type), method: :delete
     end
   end
 

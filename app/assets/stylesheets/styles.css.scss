@@ -73,7 +73,7 @@ heading {
 
   .cover-image {
     margin-top: 25px;
-    background-image: image-url("you.jpeg");
+    background-image: image-url("cookies.jpeg");
     background-size: cover;
     color: #fff;
     height: 320px;
@@ -197,6 +197,7 @@ heading {
       background-color: #0054dd;
       position: absolute;
       right: 0px;
+      z-index: 1;
     }
   }
 }

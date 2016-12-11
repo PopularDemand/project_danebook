@@ -10,6 +10,7 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @posts = @user.posts.order(created_at: :desc)
     @post = Post.new
+    # @comment = Comment.new
     # TODO: lol
     @friends = User.all.sample(9)
   end

@@ -1,0 +1,9 @@
+<article class="comment-form">
+
+  <%= simple_form_for [post, Comment.new] do |f| %>
+    <%= f.input :message, placeholder: "Write a comment", label: false %>
+    <a href="#">Cancel</a>
+    <%= f.submit "Comment", class: 'submit-comment' %>
+  <% end %>
+  
+</article>

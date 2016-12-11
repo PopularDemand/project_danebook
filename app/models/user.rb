@@ -1,25 +1,53 @@
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  
   has_secure_password
 
   has_one   :profile,
               dependent: :destroy,
               inverse_of: :user
+
   has_many  :posts,
              dependent: :destroy,
               foreign_key: :author_id
+
   has_many  :comments,
               foreign_key: :commenter_id
-  has_many  :commented_posts,
+  has_many  :post_comments,
               through: :comments,
               source: :commentable,
               source_type: "Post"
+  has_many  :comment_comments,
+              through: :comments, 
+              source: :commentable,
+              source_type: "Comment"
+
   has_many  :likes,
               foreign_key: :liker_id
   has_many  :liked_posts,
               through: :likes,
               source: :likable,
               source_type: "Post"
+  has_many  :liked_comments,
+              through: :likes,
+              source: :likable,
+              source_type: "Comment"
+
+  has_many  :received_friendings,
+              class_name: "Friending",
+              foreign_key: :recipient_id
+  has_many  :initiating_friends,
+              through: :received_friendings,
+              foreign_key: :recipient_id,
+              source: :initiator
+
+  has_many  :initiated_friendings,
+              class_name: "Friending",
+              foreign_key: :initiator_id
+  has_many  :receiving_friends,
+              through: :initiated_friendings,
+              foreign_key: :initator_id,
+              source: :recipient # what the join table calls it
 
   accepts_nested_attributes_for :profile, reject_if: :all_blank
 
@@ -61,9 +89,9 @@ class User < ApplicationRecord
 
   # TODO: vvvvvvvvvv coupling?
 
-  def comment_on(commentable, message)
-    commentable.comments.create(commenter_id: self.id, message: message)
-  end
+  # def comment_on(commentable, message)
+  #   commentable.comments.create(commenter_id: self.id, message: message)
+  # end
 
   private
 

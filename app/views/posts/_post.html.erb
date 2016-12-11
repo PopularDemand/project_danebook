@@ -14,7 +14,15 @@
   <footer>
     <div class="post-options">
 
+      <!-- post like/unlike -->
       <%= render partial: 'post_footer', locals: { post: post, user: user } %>
+      
+      <!-- list of self contained comments with form -->
+      <div class="comments">
+        <%= render partial: 'comments/comments', locals: { post: post, user: user } %>
+        
+        <%= render partial: 'comments/comment_form', locals: { post: post, user: user } %>
+      </div>
 
     </div>
   </footer>

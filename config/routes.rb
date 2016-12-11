@@ -19,8 +19,9 @@ Rails.application.routes.draw do
     get       'timeline' => 'posts#timeline'
   end
 
-  # resources :comments, concerns: [:likable]
+  resources :comments, concerns: [:likable], only: [:create, :destroy]
   resources :posts,    concerns: [:likable, :commentable], only: []
+  resources :likable,  concerns: [:likable], only: []
 
   # get ':posts/:post_id/like'
 

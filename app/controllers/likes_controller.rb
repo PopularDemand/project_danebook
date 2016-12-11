@@ -1,17 +1,15 @@
 class LikesController < ApplicationController
 
-  before_action :store_referer
+  before_action :store_referer, only: [:create, :destroy]
+  before_action :set_likable, only: [:create, :destroy]
 
   def create
-    # TODO: make function to determine polymorphism
-    post = Post.find(params[:post_id])
-    current_user.liked_posts << post
+    @likable.liked_by(current_user)
     redirect_to referer
   end
 
   def destroy
-    post = Post.find(params[:post_id])
-    current_user.unlike(post)
+    current_user.unlike(@likable)
     redirect_to referer
   end
 
@@ -23,6 +21,11 @@ class LikesController < ApplicationController
 
     def referer
       session.delete(:referer)
+    end
+
+    def set_likable
+      parent_class = params[:type].classify.constantize
+      @likable = parent_class.find(params[:likable_id])
     end
 
 end

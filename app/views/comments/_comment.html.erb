@@ -1,0 +1,21 @@
+<article class="comment">
+  <div class="commenter-image col-md-1">
+    <%= link_to comment.commenter do %>
+      <%= image_tag(comment.commenter.profile.profile_pic) %>
+    <% end %>
+  </div>
+  <div class='comment-text col-md-11'>
+    <p class='comment-meta'>
+      <%= link_to comment.commenter.full_name, comment.commenter %> said on Thursday 10/27/2016:
+    </p>
+    <p>
+      <%= comment.message %>
+    </p>
+
+    <div class="comment-options">
+      <%= like_or_unlike(comment) %>
+      <%= current_likes(comment) %>
+      <%= delete_option(comment) %>
+    </div>
+  </div>
+</article>
