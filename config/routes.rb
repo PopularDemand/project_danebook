@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "users#new"
   delete 'logout' => 'sessions#destroy'
   post   'login' => 'sessions#create'
+  delete 'unfriend/:user_id' => 'friendings#destroy', as: 'unfriend'
 
   concern :likable do
     resources :likes, only: [:destroy, :create]
@@ -19,9 +20,10 @@ Rails.application.routes.draw do
     get       'timeline' => 'posts#timeline'
   end
 
+  resources :friendings, only: [:create]
   resources :comments, concerns: [:likable], only: [:create, :destroy]
   resources :posts,    concerns: [:likable, :commentable], only: []
-  resources :likable,  concerns: [:likable], only: []
+  resources :likables,  concerns: [:likable], only: []
 
   # get ':posts/:post_id/like'
 

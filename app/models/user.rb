@@ -83,15 +83,18 @@ class User < ApplicationRecord
     likable.liked_by(self)
   end
 
-  def unlike(likable)
-    Like.from_user_and_likable(self, likable)[0].destroy
+  def unfriend(user)
+    Friending.destroy_friendship_between(self.id, user)
   end
 
-  # TODO: vvvvvvvvvv coupling?
+  def friends
+    friends = self.initiating_friends + self.receiving_friends
+    friends.uniq
+  end
 
-  # def comment_on(commentable, message)
-  #   commentable.comments.create(commenter_id: self.id, message: message)
-  # end
+  def friends_with?(user)
+    self.friends.include?(user)
+  end
 
   private
 

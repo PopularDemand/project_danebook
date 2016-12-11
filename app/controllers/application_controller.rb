@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  before_action :require_logged_in_user
+
   private
   def sign_in(user)
     user.regenerate_auth_token

@@ -12,6 +12,8 @@ timeline has @comment in controller to build possible comment. okay to use that 
 
 better way to determine parent of like (likes helper)
 
+Unjankify friendings helper friend button
+
 ================
 
 PSEUDOCODE

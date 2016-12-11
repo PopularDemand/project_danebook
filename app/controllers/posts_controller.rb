@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     @post = Post.new
     # @comment = Comment.new
     # TODO: lol
-    @friends = User.all.sample(9)
+    @friends = @user.friends
   end
 
   def create

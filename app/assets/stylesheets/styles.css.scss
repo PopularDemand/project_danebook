@@ -144,8 +144,14 @@ heading {
       line-height: 40px;
       margin-right: 20px;
     }
+    .mid-nav-button {
+      display: inline-block;
+      float: right;
+      height: 30px;
+      margin-top: 3px;
+      margin-right: 20px;
+    }
   }
-
 }
 
 // Misc
@@ -281,7 +287,7 @@ heading {
   }
   .btn-lg {
     width: 50%;
-    background-color: #50a1b9;
+    // background-color: #50a1b9;
     margin-left: 25%;
     margin-top: 75px;
     height: 75px;
@@ -323,6 +329,9 @@ heading {
   a {
     text-decoration: underline;
   }
+  .button-link {
+    text-decoration: none;
+  }
 
   // left column
   .left-column section {
@@ -362,6 +371,12 @@ heading {
   .right-column section {
     margin-top: 25px;
     margin-left: 15px; // not reasonable
+  }
+  .timeline-add-friend {
+    height: 80px;
+    margin-top: 16px;
+    font-size: 44px;
+    line-height: 60px;
   }
   .submit-post {
     textarea {

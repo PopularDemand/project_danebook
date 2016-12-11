@@ -27,6 +27,7 @@
         <a href="#">Friends <span class="count-text">(542)</span></a>
       </li>
     </ul>
+    <%= render partial: 'shared/friend_button', locals: {user: @user, btn_size: 'sm', class_options: 'mid-nav-button'} %>
     <%= render partial: 'shared/edit_profile_link', locals: { user: user } %>
   </nav>
   </div>

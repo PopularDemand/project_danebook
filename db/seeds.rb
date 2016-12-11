@@ -15,7 +15,7 @@ Like.destroy_all
 puts 'destroying posts'
 Post.destroy_all
 
-USER_NUM = 10
+USER_NUM = 25
 POST_PER_USER = 5
 LIKES_PER_USER = 5
 P_PICS = ['dog.png', 'smile.png', 'woman.png', 'doge.jpg']
@@ -51,6 +51,11 @@ end
 
 User.all.each do |user|
   user.like(Post.all.sample)
+  friend = User.all.sample
+  while friend == user
+    friend = User.all.sample
+  end
+  user.receiving_friends << friend
 end
 
 Post.all.each do |post|

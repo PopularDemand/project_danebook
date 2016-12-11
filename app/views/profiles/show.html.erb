@@ -56,5 +56,6 @@
         <p><%= @profile.about_me %></p>
       </section> <!-- about -->
     </article> <!-- /right column -->
+    <%= render partial: 'shared/friend_button', locals: { user: @user, btn_size: "lg"} %>
   </main>
 </section><!-- profile -->
