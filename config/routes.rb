@@ -13,14 +13,14 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    resources :comments, shallow: true
+    # resources :comments, shallow: true
     resources :posts,    shallow: true
     resource  :profile,  except: [:new, :create, :destroy]
     get       'timeline' => 'posts#timeline'
   end
 
-  resources :comments, concerns: [:likable]
-  resources :posts,    concerns: [:likable, :commentable]
+  # resources :comments, concerns: [:likable]
+  resources :posts,    concerns: [:likable, :commentable], only: []
 
   # get ':posts/:post_id/like'
 

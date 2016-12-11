@@ -3,19 +3,23 @@ class User < ApplicationRecord
   has_secure_password
 
   has_one   :profile,
-            dependent: :destroy,
-            inverse_of: :user
+              dependent: :destroy,
+              inverse_of: :user
   has_many  :posts,
-            dependent: :destroy,
-            foreign_key: :author_id
+             dependent: :destroy,
+              foreign_key: :author_id
   has_many  :comments,
-            foreign_key: :author_id
+              foreign_key: :commenter_id
+  has_many  :commented_posts,
+              through: :comments,
+              source: :commentable,
+              source_type: "Post"
   has_many  :likes,
-            foreign_key: :liker_id
+              foreign_key: :liker_id
   has_many  :liked_posts,
-            through: :likes,
-            source: :likable,
-            source_type: "Post"
+              through: :likes,
+              source: :likable,
+              source_type: "Post"
 
   accepts_nested_attributes_for :profile, reject_if: :all_blank
 
@@ -26,7 +30,8 @@ class User < ApplicationRecord
   validates :email,      presence: true, length: { maximum: 255 },
                          format: { with: VALID_EMAIL_REGEX }
   
-  before_save :capitalize_name
+  before_save :capitalize_name,
+              :downcase_email
 
 
   def generate_token
@@ -54,6 +59,12 @@ class User < ApplicationRecord
     Like.from_user_and_likable(self, likable)[0].destroy
   end
 
+  # TODO: vvvvvvvvvv coupling?
+
+  def comment_on(commentable, message)
+    commentable.comments.create(commenter_id: self.id, message: message)
+  end
+
   private
 
     def capitalize_name
@@ -62,6 +73,6 @@ class User < ApplicationRecord
     end
 
     def downcase_email
-      self.email.downcase
+      self.email  = email.downcase
     end
 end

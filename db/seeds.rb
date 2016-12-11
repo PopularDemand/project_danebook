@@ -19,6 +19,7 @@ USER_NUM = 10
 POST_PER_USER = 5
 LIKES_PER_USER = 5
 P_PICS = ['dog.png', 'smile.png', 'woman.png', 'doge.jpg']
+COMMENTS_PER_POST = 2
 
 USER_NUM.times do |i|
   user = User.create(
@@ -50,4 +51,14 @@ end
 
 User.all.each do |user|
   user.like(Post.all.sample)
+end
+
+Post.all.each do |post|
+  COMMENTS_PER_POST.times do
+    commenter_id = User.all.sample.id
+    post.comments.create(
+      commenter_id: commenter_id,
+      message: Faker::Hipster.sentence
+    )
+  end
 end

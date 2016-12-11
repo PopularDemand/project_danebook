@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
   before_action :require_current_user, only: [:destroy]
+  before_action :require_logged_in_user
 
   def index
   end
