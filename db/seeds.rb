@@ -15,11 +15,14 @@ Like.destroy_all
 puts 'destroying posts'
 Post.destroy_all
 
-USER_NUM = 25
+USER_NUM = 40
 POST_PER_USER = 5
 LIKES_PER_USER = 5
 P_PICS = ['dog.png', 'smile.png', 'woman.png', 'doge.jpg']
 COMMENTS_PER_POST = 2
+POST_LIKES = 10
+COMMENT_LIKES = 3
+INITIATED_FRIENDSHIPS = 5
 
 USER_NUM.times do |i|
   user = User.create(
@@ -49,15 +52,6 @@ USER_NUM.times do |i|
   end
 end
 
-User.all.each do |user|
-  user.like(Post.all.sample)
-  friend = User.all.sample
-  while friend == user
-    friend = User.all.sample
-  end
-  user.receiving_friends << friend
-end
-
 Post.all.each do |post|
   COMMENTS_PER_POST.times do
     commenter_id = User.all.sample.id
@@ -65,5 +59,21 @@ Post.all.each do |post|
       commenter_id: commenter_id,
       message: Faker::Hipster.sentence
     )
+  end
+end
+
+User.all.each do |user|
+  POST_LIKES.times do
+    user.like(Post.all.sample)
+  end
+  COMMENT_LIKES.times do
+    user.like(Comment.all.sample)
+  end
+  INITIATED_FRIENDSHIPS.times do
+    friend = User.all.sample
+    while friend == user || user.friends.include?(friend)
+      friend = User.all.sample
+    end
+    user.receiving_friends << friend
   end
 end
