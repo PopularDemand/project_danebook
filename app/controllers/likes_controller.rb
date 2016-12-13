@@ -9,6 +9,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
+    # params[:id] is like id. just destroy that like 
     current_user.unlike(@likable)
     redirect_to referer
   end

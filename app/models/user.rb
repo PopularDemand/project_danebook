@@ -51,10 +51,10 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :profile, reject_if: :all_blank
 
-  validates :password,   presence: true,
+  validates :password,   length: { minimum: 6 },
                          allow_nil: true
-  validates :first_name, length: { maximum: 30 }
-  validates :last_name,  length: { maximum: 30 }
+  validates :first_name, length: { in: 1..30 }
+  validates :last_name,  length: { in: 1..30 }
   validates :email,      presence: true, length: { maximum: 255 },
                          format: { with: VALID_EMAIL_REGEX }
   
