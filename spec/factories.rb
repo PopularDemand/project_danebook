@@ -1,6 +1,8 @@
 FactoryGirl.define do
 
   factory :user, aliases: [:author, :commenter, :liker] do
+    after(:create) { |user| user.profile = build(:profile) }
+
     first_name "this"
     last_name "that"
     email "this@this.com"
@@ -44,7 +46,7 @@ FactoryGirl.define do
   end
 
   factory :profile do
-    birthday 25.years.ago
+    birthday "1985-05-05"
     college "Generic U"
     hometown 'Small Town'
     currently_lives 'Big City'
@@ -52,6 +54,5 @@ FactoryGirl.define do
     words_to_live_by 'Words to live by!'
     about_me 'about me'
     sex 'female'
-    user
   end
 end
