@@ -22,6 +22,11 @@ group :production do
   gem 'rails_12factor'
 end
 
+group :test do
+  gem 'capybara'
+  gem 'launchy'
+end
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'jazz_fingers'
