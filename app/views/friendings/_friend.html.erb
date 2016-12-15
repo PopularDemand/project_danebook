@@ -1,0 +1,14 @@
+<% friends.each do |friend| %>
+  <div class="friend col-md-6">
+    <div class="friend-wrapper">
+      <%= link_to friend do %>
+        <%= image_tag(friend.profile.profile_pic) %>
+      <% end %>
+      <div class="friend-info">
+        <%= link_to friend.full_name, friend %>
+        <p>Friends: <%= friend.friend_count %></p>
+      </div>
+      <%= render partial: 'shared/friend_button', locals: {user: friend, btn_size: 'md', class_options: []} %>
+    </div>
+  </div>
+<% end %>

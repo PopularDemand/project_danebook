@@ -9,28 +9,35 @@
     </h2>
   </section>
 
+
+  <!-- TODO add  class='current' to mid nav current page -->
   <!-- Mid Nav -->
   <div class="row">
-  <nav class='mid-nav col-xs-12'>
-    <div class="mid-nav-padding"></div>
-    <ul>
-    <!-- TODO: provide class='current' from the child pages -->
-      <li>
-      <%= link_to "Timeline", user_timeline_path(user) %>
-      </li>
-      <li>
-        <%= link_to "About", user_profile_path(user) %>
-      </li>
-      <li>
-        <a href="#">Photos <span class="count-text">(123)</span></a>
-      </li>
-      <li>
-        <a href="#">Friends <span class="count-text"><%= user.friend_count %></span></a>
-      </li>
-    </ul>
-    
-    <%= render partial: 'shared/friend_button', locals: {user: @user, btn_size: 'sm', class_options: ['mid-nav-button']} %>
-    <%= render partial: 'shared/edit_profile_link', locals: { user: user } %>
-  </nav>
+    <nav class='mid-nav col-xs-12'>
+      <div class="mid-nav-padding"></div>
+
+      <ul>
+      <!-- TODO: provide class='current' from the child pages -->
+        <li>
+        <%= link_to "Timeline", user_timeline_path(user) %>
+        </li>
+        <li>
+          <%= link_to "About", user_profile_path(user) %>
+        </li>
+        <li>
+          <a href="#">Photos <span class="count-text">(123)</span></a>
+        </li>
+        <li>
+          <%= link_to user_friends_path(@user) do %>
+            Friends
+            <span class='count-text'>(<%= @user.friend_count %>)</span>
+          <% end %>
+        </li>
+      </ul>
+      
+      <%= render partial: 'shared/friend_button', locals: {user: @user, btn_size: 'sm', class_options: ['mid-nav-button']} %>
+      <%= render partial: 'shared/edit_profile_link', locals: { user: user } %>
+      
+    </nav>
   </div>
 </heading>

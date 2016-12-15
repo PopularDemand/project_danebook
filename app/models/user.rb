@@ -97,7 +97,7 @@ class User < ApplicationRecord
   end
 
   def friend_count
-    self.initiated_friendings.size + self.received_friendings.size
+    self.friends.size
   end
 
   private

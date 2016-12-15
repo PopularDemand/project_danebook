@@ -21,6 +21,11 @@ class FriendingsController < ApplicationController
     redirect_to user_timeline_path(old_friend)
   end
 
+  def index
+    @user = User.find(params[:user_id])
+    @friends = @user.friends
+  end
+
 
   private
 
