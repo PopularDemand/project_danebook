@@ -3,12 +3,12 @@
 
 <% if current_user.friends_with?(user) %>
   <%= link_to unfriend_path(user), method: :delete, class: 'button-link' do  %>
-    <%= friendship_button(user, btn_size: btn_size, class_options: local_assigns[:class_options]) %>
+    <%= friendship_button(user, btn_size: btn_size, class_options: class_options) %>
   <% end %>
 <% elsif user == current_user %>
 <% else %>
   <%= link_to friendings_path(new_friend: user), method: :post, class: 'button-link' do  %>
-    <%= friendship_button(user, btn_size: btn_size, class_options: local_assigns[:class_options]) %>
+    <%= friendship_button(user, btn_size: btn_size, class_options: class_options) %>
   <% end %>
 <% end %>
 

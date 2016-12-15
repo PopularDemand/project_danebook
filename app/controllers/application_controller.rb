@@ -23,6 +23,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_logged_out_user
+    if signed_in_user?
+      flash[:info] = "You can only do that once."
+      redirect_to user_timeline_path(current_user)
+    end
+  end
+
   def require_current_user
     unless current_user.id.to_s == params[:id]
       flash[:warning] = "NOT AUTHORIZED TO DO THAT, BUB"

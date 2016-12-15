@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
   skip_before_action :require_logged_in_user, only: [:new, :create]
   before_action :set_user, only: [:show]
-  before_action :require_current_user, only: [:edit, :update, :destroy]
+  # before_action :require_current_user, only: [:edit, :update, :destroy]
+  before_action :require_logged_out_user, only: [:create]
 
   def new
     if signed_in_user?

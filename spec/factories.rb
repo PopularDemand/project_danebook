@@ -7,6 +7,7 @@ FactoryGirl.define do
     last_name "that"
     email "this@this.com"
     password 'password'
+    sequence(:auth_token) { |n| SecureRandom.urlsafe_base64 + "#{n}"}
 
     trait :blank_password do
       password ''
@@ -54,5 +55,9 @@ FactoryGirl.define do
     words_to_live_by 'Words to live by!'
     about_me 'about me'
     sex 'female'
+
+    trait :non_default_telephone do
+      telephone 18008675309
+    end
   end
 end

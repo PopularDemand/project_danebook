@@ -44,7 +44,7 @@
       <% if current_user.friends_with?(@user) || @user == current_user%>
         <%= render partial: @posts, locals: { user: @user } %>
       <% else %>
-        <%= render partial: 'shared/friend_button', locals: {user: @user, btn_size: 'block', class_options: 'timeline-add-friend'} %>
+        <%= render partial: 'shared/friend_button', locals: {user: @user, btn_size: 'block', class_options: ['timeline-add-friend']} %>
       <% end %>
 
     </article> <!-- /right column -->
