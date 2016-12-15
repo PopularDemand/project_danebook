@@ -9,6 +9,8 @@
     </h2>
   </section>
 
+
+  <!-- TODO add  class='current' to mid nav current page -->
   <!-- Mid Nav -->
   <div class="row">
   <nav class='mid-nav col-xs-12'>
@@ -23,8 +25,11 @@
       <li>
         <a href="#">Photos <span class="count-text">(123)</span></a>
       </li>
-      <li class='current'>
-        <a href="#">Friends <span class="count-text"><%= user.friend_count %></span></a>
+      <li>
+        <%= link_to user_friends_path(@user) do %>
+          Friends
+          <span class='count-text'>(<%= @user.friend_count %>)</span>
+        <% end %>
       </li>
     </ul>
     <%= render partial: 'shared/friend_button', locals: {user: @user, btn_size: 'sm', class_options: 'mid-nav-button'} %>

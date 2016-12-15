@@ -28,7 +28,7 @@
       <section class='timeline-friends row'>
         <h2>Friends <%= @user.friend_count %></h2>
         
-        <%= render partial: "shared/friends", locals: { friends: @friends } %>
+        <%= render partial: "shared/friends_sidebar", locals: { friends: @friends } %>
 
         <a href="#" class='col-md-12'>See More Friends</a>
       </section> <!-- /friends -->
