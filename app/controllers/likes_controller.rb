@@ -5,12 +5,15 @@ class LikesController < ApplicationController
 
   def create
     @likable.liked_by(current_user)
+    flash[:success] = "Yep, that's a pretty good #{@likable.class.to_s.downcase}."
     redirect_to referer
   end
 
   def destroy
     # params[:id] is like id. just destroy that like 
-    current_user.unlike(@likable)
+    # current_user.unlike(@likable)
+    @likable.unliked_by(current_user)
+    flash[:success] = "Unliked." 
     redirect_to referer
   end
 

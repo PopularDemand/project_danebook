@@ -1,13 +1,19 @@
 <heading>
   <!-- Jumbotron -->
-  <section class="jumbotron cover-image">
-    <div class="image-mask">
-      <%= image_tag(user.profile.profile_pic) %>
-    </div>
-    <h2 class='profile-name'>
-      <%= user.full_name %>
-    </h2>
-  </section>
+<!--   <section class="jumbotron cover-image" style:""> -->
+  <%= content_tag :section, class: 'jumbotron cover-image', style: "background-image:url(#{@user.profile.cover_image});" do %>
+<!--   background-image: image-url("cookies.jpeg") -->
+
+<div class="container">
+  <div class="image-mask">
+    <%= image_tag(user.profile.profile_pic, class: 'profile-pic') %>
+  </div>
+  <h2 class='profile-name'>
+    <%= user.full_name %>
+  </h2>
+</div>
+  <% end %>
+<!--   </section> -->
 
 
   <!-- TODO add  class='current' to mid nav current page -->

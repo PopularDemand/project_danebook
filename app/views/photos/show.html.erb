@@ -15,6 +15,13 @@
           <br>
           <%= like_or_unlike(@photo) %>
         </div>
+
+        <div>
+          <% if @user == current_user %>
+            <%= link_to 'Set as Profile Picture', photo_profile_pic_path(@photo), method: :post %>
+            <%= link_to 'Set as Cover Image', photo_cover_image_path(@photo), method: :post %>
+          <% end %>
+        </div>
       </div>
       
       

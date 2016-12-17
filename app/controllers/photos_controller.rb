@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
 
   before_filter :require_current_user, only: [:create, :new]
-  before_filter :set_user, only: [:show]
+  before_filter :set_user, only: [:show, :new]
   before_filter :require_friendship, only: :show
 
   def new

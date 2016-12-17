@@ -2,11 +2,10 @@
   <div class='page-title col-md-12'>
     <h1>New Photo</h1>
   </div>
-
   <main class='photo-grid'>
     <div class="new-photo-form">
       <h3>Select a photo to upload</h3>
-      <%= simple_form_for [@user, @photo] do |f| %>
+      <%= simple_form_for [@user, Photo.new] do |f| %>
           <%= f.input :content, label: false %>
           <%= f.submit %>
       <% end %>
