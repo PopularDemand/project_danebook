@@ -1,9 +1,17 @@
 <article class="comment-form">
 
-  <%= simple_form_for [post, Comment.new] do |f| %>
+  <%= simple_form_for [commentable, Comment.new], :url => commentable_comments_path(commentable, Comment.new, type: commentable.class) do |f| %>
     <%= f.input :message, placeholder: "Write a comment", label: false %>
     <a href="#">Cancel</a>
     <%= f.submit "Comment", class: 'submit-comment' %>
   <% end %>
   
 </article>
+
+
+<!-- KIT SAY DO THIS -->
+  <%#= simple_form_for [commentable, Comment.new] do |f| %>
+    <%#= f.input :message, placeholder: "Write a comment", label: false %>
+    <!-- <a href="#">Cancel</a> -->
+    <%#= f.submit "Comment", class: 'submit-comment' %>
+  <%# end %>

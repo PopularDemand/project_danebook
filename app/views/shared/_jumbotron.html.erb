@@ -19,13 +19,16 @@
       <ul>
       <!-- TODO: provide class='current' from the child pages -->
         <li>
-        <%= link_to "Timeline", user_timeline_path(user) %>
+          <%= link_to "Timeline", user_timeline_path(user) %>
         </li>
         <li>
           <%= link_to "About", user_profile_path(user) %>
         </li>
         <li>
-          <a href="#">Photos <span class="count-text">(123)</span></a>
+          <%= link_to user_photos_path(@user) do %>
+            Photos
+            <%= content_tag :span, "(#{@user.photos.size})", class: 'count-text' %>
+          <% end %>
         </li>
         <li>
           <%= link_to user_friends_path(@user) do %>
@@ -35,8 +38,11 @@
         </li>
       </ul>
       
-      <%= render partial: 'shared/friend_button', locals: {user: @user, btn_size: 'sm', class_options: ['mid-nav-button']} %>
-      <%= render partial: 'shared/edit_profile_link', locals: { user: user } %>
+      <% if current_user == @user %>
+        <%= yield :mid_nav_option %>
+      <% else %>
+        <%= render partial: 'shared/friend_button', locals: {user: @user, btn_size: 'sm', class_options: ['mid-nav-button']} %>
+      <% end %>
       
     </nav>
   </div>

@@ -19,9 +19,9 @@
       
       <!-- list of self contained comments with form -->
       <div class="comments">
-        <%= render partial: 'comments/comments', locals: { post: post, user: user } %>
+        <%= render partial: 'comments/comments', locals: { commentable: post, user: user } %>
         
-        <%= render partial: 'comments/comment_form', locals: { post: post, user: user } %>
+        <%= render partial: 'comments/comment_form', locals: { commentable: post, user: user } %>
       </div>
 
     </div>

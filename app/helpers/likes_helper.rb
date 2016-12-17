@@ -1,5 +1,5 @@
 module LikesHelper
-
+  
   # TODO: "You" when current user likes
   def current_likes(likable)
     likes = likable.likes

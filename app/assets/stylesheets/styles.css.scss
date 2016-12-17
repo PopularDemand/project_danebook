@@ -4,12 +4,18 @@
 
 body {
   font-family: "Comic Sans MS", sans-serif;
-  padding-bottom: 75px;
+  padding-bottom: 50px;
 }
 
 .flash-message {
   margin-top: 40px;
   z-index: 15;
+}
+
+.nothing-to-show {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 25px;
 }
 
 // Top Nav
@@ -421,6 +427,56 @@ heading {
     footer {
       padding: 10px;
       .post-options {
+        // Comments section
+        .comments {
+          background-color: #ddd;
+          display: inline-block;
+          .commenter-image {
+            padding: 10px;
+            line-height: 1em;
+            img {
+              max-width: 50px;
+            }
+          }
+          .comment{
+            width: 100%;
+            background-color: #ddd;
+            padding-top: 10px;
+            display: inline-block;
+            &:first-child {
+              border-top: 1px solid #ccc;
+            }
+            .comment-text {
+              padding-bottom: 5px;
+              margin-left: 5%;
+            }
+            .comment-options {
+              line-height: 1;
+              .delete-comment {
+                float: right;
+              }
+            }
+            .comment-meta {
+              color: #666;
+              display: inline-block;
+              padding-bottom: 5px;
+            }
+          }
+          .comment-form {
+            form {
+              width: 90%;
+              margin: 5%;
+              textarea {
+                width: 100%;
+              }
+            }
+            .submit-comment {
+              float: right;
+              background-color: #50a1b9;
+              color: #fff;
+            }
+          }
+        }
         a{
           margin-right: 10px;
         }
@@ -433,59 +489,8 @@ heading {
         margin-bottom: 0;
       }
     }
-
-    // Comments section
-    .comments {
-      background-color: #ddd;
-      display: inline-block;
-      .commenter-image {
-        padding: 10px;
-        line-height: 1em;
-        img {
-          max-width: 50px;
-        }
-      }
-      .comment{
-        width: 100%;
-        background-color: #ddd;
-        padding-top: 10px;
-        display: inline-block;
-        &:first-child {
-          border-top: 1px solid #ccc;
-        }
-        .comment-text {
-          padding-bottom: 5px;
-        }
-        .comment-options {
-          line-height: 1;
-          .delete-comment {
-            float: right;
-          }
-        }
-        .comment-meta {
-          color: #666;
-          display: inline-block;
-          padding-bottom: 5px;
-        }
-      }
-      .comment-form {
-        form {
-          width: 90%;
-          margin: 5%;
-          textarea {
-            width: 100%;
-          }
-        }
-        .submit-comment {
-          float: right;
-          background-color: #50a1b9;
-          color: #fff;
-        }
-      }
-    }
   }
 }
-
 
 /////// Photos
 
@@ -502,7 +507,9 @@ heading {
       right: 15px;
     }
   }
-  .photo-grid {
+  .photo-grid, .photo-display {
+    min-height: 250px;
+    min-width: 100%;
     display: inline-block;
     border: 2px solid #000;
     border-top: 0;
@@ -537,6 +544,86 @@ heading {
       }
     }
   }
+  .photo-show {
+    max-width: calc(100% - 2px);
+    border: 2px solid black;
+  }
+  .photo-show-wrapper {
+    margin: 25px 0;
+    display: inline-block;
+    .left-column {
+      text-align: center;
+    }
+    .like-info {
+      margin-top: 25px;
+    }
+    // Comments section
+    .comments {
+      background-color: #ddd;
+      display: inline-block;
+      .commenter-image {
+        padding: 10px;
+        line-height: 1em;
+        a {
+          display: inline-block;
+          width: 75px;
+          img {
+            max-width: 85%;
+            border: 1px solid #aaa;
+          }
+        }
+      }
+      .comment{
+        width: 100%;
+        background-color: #ddd;
+        padding-top: 10px;
+        display: inline-block;
+        &:first-child {
+          border-top: 1px solid #ccc;
+        }
+        .comment-text {
+          padding-bottom: 5px;
+          margin-left: 7.5%;
+        }
+        .comment-options {
+          line-height: 1;
+          .delete-comment {
+            float: right;
+          }
+        }
+        .comment-meta {
+          color: #666;
+          display: inline-block;
+          padding-bottom: 5px;
+        }
+      }
+      .comment-form {
+        form {
+          width: 90%;
+          margin: 5%;
+          textarea {
+            width: 100%;
+          }
+        }
+        .submit-comment {
+          float: right;
+          background-color: #50a1b9;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .new-photo-form {
+    margin-top: 50px;
+    text-align: center;
+    h3 {
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    #photo_content {
+      display: inline-block;
+    }
+  }
 }
 
 /////// friends
@@ -547,6 +634,8 @@ heading {
     background-color: #ddd;
   }
   .friend-grid {
+    min-height: 250px;
+    min-width: 100%;
     display: inline-block;
     border: 2px solid #000;
     border-top: 0;

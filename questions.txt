@@ -14,6 +14,16 @@ better way to determine parent of like (likes helper)
 
 Unjankify friendings helper friend button
 
+
+get this to work, _photo.html.erb
+<%# if current_user.friends_with?(user) %>
+  <%#= wrap_with_link(photo_partial(photo)) %>
+<%# else %>
+  <%#= photo_partial(limit: 4) %>
+<%# end %>
+
+
+
 ================
 
 PSEUDOCODE

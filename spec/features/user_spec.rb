@@ -47,7 +47,6 @@ feature User do
       it 'allows sign in with valid data' do
         visit root_path
         sign_in(user.email, user.password)
-        click_on("Login!")
         expect(page).to have_content(user.full_name)
       end
     end
@@ -56,10 +55,23 @@ feature User do
       it 'redirects back to the sign in page' do
         visit root_path
         sign_in(user.email, "wrong password")
-        click_on("Login!")
         expect(page).to have_content('Unable to log in')
       end
     end
+  end
 
+  describe 'photo upload' do
+    context 'signed in user' do
+
+      let(:user) { create(:user) }
+
+      context 'with valid data' do
+        it 'displays a file upload input' do
+          sign_in(user.email, user.password)
+          visit edit_user_profile_path(user)
+          expect(page).to have_content('#profile_profile_photo')
+        end
+      end
+    end
   end
 end

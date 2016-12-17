@@ -1,10 +1,10 @@
 class CommentsController < ApplicationController
 
   before_action :store_referer, only: [:create, :destroy]
+  before_action :set_commentable, only: [:create]
 
   def create
-    post = Post.find(params[:post_id])
-    post.create_new_comment(current_user, strong_comment_params)
+    @commentable.create_new_comment(current_user, strong_comment_params)
     flash[:success] = "Very insightful. Comment posted."
     redirect_to referer
   end
@@ -29,4 +29,16 @@ class CommentsController < ApplicationController
     def referer
       session.delete(:referer)
     end
+
+    def set_commentable
+      parent_class = params[:type].classify.constantize
+      @commentable = parent_class.find(params[:commentable_id])
+    end
 end
+
+
+# do somthing like this
+#     def set_commentable
+#       parent_class = params[:type].classify.constantize
+#       @commentable = parent_class.find(params[:post_id]) <<--- polymorph it
+#     end

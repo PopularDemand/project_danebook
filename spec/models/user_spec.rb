@@ -61,6 +61,12 @@ describe User do
 
   context 'Associations' do
 
+    describe 'photos' do
+      it 'has many photos' do
+        expect(user).to respond_to(:photos)
+      end
+    end
+
     describe 'posts' do
       # TODO be more specific
       it 'has many posts' do

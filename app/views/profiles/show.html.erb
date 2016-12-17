@@ -1,3 +1,7 @@
+<% content_for :mid_nav_option do %>
+  <%= render partial: 'shared/edit_profile_link', locals: { user: @user } %>
+<% end %>
+
 <!-- Main Content -->
 <section class="profile">
   <div class='page-title col-sm-12'>

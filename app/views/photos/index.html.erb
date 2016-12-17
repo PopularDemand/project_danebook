@@ -1,0 +1,22 @@
+<% content_for :mid_nav_option do %>
+  <%= link_to new_user_photo_path(@user), class: 'button-link' do  %>
+    <%= button_tag "Add Photo", class: "btn btn-sm btn-success mid-nav-button" %>
+  <% end %>
+<% end %>
+
+<section class="photos">
+  <div class='page-title col-md-12'>
+    <h1>Photos</h1>
+    <!-- <button class='add-photo-btn'>Add Photo!</button> -->
+  </div>
+
+  <main class='photo-grid'>
+    
+    <% if @user.photos.empty? %>
+      <p class='nothing-to-show'>No photos to show...</p>
+    <% else %>
+      <%= render @user.photos %>
+    <% end %>
+    
+  </main>
+</section>

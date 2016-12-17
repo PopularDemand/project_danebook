@@ -1,0 +1,12 @@
+<div class="photo col-md-3">
+  <%= link_to user_photo_path(@user, photo) do %>
+    <div class="image-wrapper">
+      <%= image_tag photo.content.url(:medium) %>
+
+      <div class="photo-info">
+        <%# l is helper for locales %>
+        <p>Uploaded <%= l(photo.created_at, format: :your_format) %></p>
+      </div>
+    </div>
+  <% end %>
+</div>

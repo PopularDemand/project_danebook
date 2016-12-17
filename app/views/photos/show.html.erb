@@ -1,0 +1,32 @@
+<section class="photos">
+  <div class='page-title col-md-12'>
+    <h1>Photo</h1>
+  </div>
+
+  
+  <main class='photo-display'>
+    
+    <div class="photo-show-wrapper col-md-12">
+      <div class="col-md-6 col-sm-12 left-column">
+        <%= image_tag @photo.content.url, class: 'photo-show' %>
+
+        <div class="like-info">
+          <%= current_likes(@photo) %>        
+          <br>
+          <%= like_or_unlike(@photo) %>
+        </div>
+      </div>
+      
+      
+      <div class="col-md-6 col-sm-12">
+        <div class="comments">
+          <%= render partial: 'comments/comments', locals: { commentable: @photo, user: @user } %>
+          
+          <%= render partial: 'comments/comment_form', locals: { commentable: @photo, user: @user } %>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+</section>

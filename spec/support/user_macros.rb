@@ -12,9 +12,18 @@ module UserMacros
   end
 
   def sign_in(email, password)
+    visit root_path
     within '#navbar-form' do
       fill_in('Email', with: email)
       fill_in('Password', with: password)
     end
+    click_on("Login!")
+  end
+
+  def sign_up
+    visit root_path
+    fill_out_sign_up_form(first_name: user.first_name, last_name: user.last_name,
+                              email: user.email)
+    click_on('Sign Up')
   end
 end

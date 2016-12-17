@@ -1,6 +1,8 @@
+include ActionDispatch::TestProcess
+
 FactoryGirl.define do
 
-  factory :user, aliases: [:author, :commenter, :liker] do
+  factory :user, aliases: [:author, :commenter, :liker, :poster] do
     after(:create) { |user| user.profile = build(:profile) }
 
     first_name "this"
@@ -11,6 +13,15 @@ FactoryGirl.define do
 
     trait :blank_password do
       password ''
+    end
+  end
+
+  factory :photo do
+    content { fixture_file_upload(Rails.root.join('app', 'assets', 'images', 'default_photo.png'), 'image/png') }
+    poster
+
+    trait :non_image do
+      content { fixture_file_upload(Rails.root.join('README.md'), 'text/markdown') }
     end
   end
 

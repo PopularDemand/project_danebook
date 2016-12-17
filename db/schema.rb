@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161211192255) do
+ActiveRecord::Schema.define(version: 20161216205327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,17 @@ ActiveRecord::Schema.define(version: 20161211192255) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["likable_type", "likable_id"], name: "index_likes_on_likable_type_and_likable_id", using: :btree
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string   "content_file_name"
+    t.string   "content_content_type"
+    t.integer  "content_file_size"
+    t.datetime "content_updated_at"
+    t.integer  "poster_id"
+    t.integer  "likes_count",          default: 0, null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   create_table "posts", force: :cascade do |t|
@@ -77,6 +88,7 @@ ActiveRecord::Schema.define(version: 20161211192255) do
     t.string   "auth_token"
     t.integer  "received_friendings_count",  default: 0, null: false
     t.integer  "initiated_friendings_count", default: 0, null: false
+    t.integer  "photos_count",               default: 0, null: false
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
   end
 

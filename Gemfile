@@ -7,6 +7,7 @@ gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
+gem 'coffee-script-source', '= 1.11.1'
 
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
@@ -17,6 +18,9 @@ gem 'faker'
 gem 'binding_of_caller'
 gem 'bcrypt', '~> 3.1.7'
 gem 'simple_form'
+gem 'paperclip'
+gem 'aws-sdk'
+gem 'figaro'
 
 group :production do
   gem 'rails_12factor'

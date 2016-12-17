@@ -7,6 +7,10 @@ class User < ApplicationRecord
               dependent: :destroy,
               inverse_of: :user
 
+  has_many  :photos,
+              dependent: :destroy,
+              foreign_key: :poster_id
+
   has_many  :posts,
              dependent: :destroy,
               foreign_key: :author_id
@@ -96,6 +100,7 @@ class User < ApplicationRecord
     self.friends.include?(user)
   end
 
+  # TODO add db columns
   def friend_count
     self.friends.size
   end
