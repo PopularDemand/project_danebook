@@ -6,7 +6,7 @@
   </div>
   <div class='comment-text col-md-10'>
     <p class='comment-meta'>
-      <%= link_to comment.commenter.full_name, comment.commenter %> said on Thursday 10/27/2016:
+      <%= link_to comment.commenter.full_name, comment.commenter %> said on <%= l(comment.created_at, format: :M_d_y_timestamp) %>:
     </p>
     <p>
       <%= comment.message %>

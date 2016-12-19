@@ -4,7 +4,7 @@
     <div class="post-details">
       <%= link_to post.author.full_name, post.author %>
       <p class='timestamp'>
-        Posted on <%= post.created_at %>
+        Posted on <%= l(post.created_at, format: :M_d_y_timestamp) %>
       </p>
     </div>
   </div>

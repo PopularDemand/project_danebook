@@ -5,7 +5,7 @@
 
       <div class="photo-info">
         <%# l is helper for locales %>
-        <p>Uploaded <%= l(photo.created_at, format: :your_format) %></p>
+        <p>Uploaded <%= l(photo.created_at, format: :M_d_y_timestamp) %></p>
       </div>
     </div>
   <% end %>

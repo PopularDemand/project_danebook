@@ -23,4 +23,4 @@ en:
   hello: "Hello world"
   time:
    formats:
-    your_format: '%b. %d %Y'
+    M_d_y_timestamp: '%b. %d %Y'

@@ -18,11 +18,14 @@ Post.destroy_all
 USER_NUM = 40
 POST_PER_USER = 5
 LIKES_PER_USER = 5
-P_PICS = ['dog.png', 'smile.png', 'woman.png', 'doge.jpg']
+PICS = ['dog.png', 'smile.png', 'woman.png', 'doge.jpg', 
+          'you.jpeg', 'joinus.jpeg', 'cookies.jpeg', 'rules.jpg']
 COMMENTS_PER_POST = 2
 POST_LIKES = 10
 COMMENT_LIKES = 3
 INITIATED_FRIENDSHIPS = 5
+
+
 
 USER_NUM.times do |i|
   user = User.create(
@@ -40,16 +43,28 @@ USER_NUM.times do |i|
     about_me: "totally human " * 25,
     birthday: "1985-05-05",
     sex: ['male', 'female'].sample,
-    profile_pic: P_PICS.sample,
+    # profile_pic: P_PICS.sample,
     telephone: Faker::PhoneNumber.cell_phone,
     user_id: user.id
   )
 
   POST_PER_USER.times do
-    user.posts.create(
+    post = user.posts.create(
       content: Faker::Hacker.say_something_smart
     )
+    post.created_at = (rand*10).days.ago
+    post.save!
   end
+
+  3.times do
+    user.photos.create(
+      content: File.open(File.join(Rails.root, "/app/assets/images/#{PICS.sample}"))
+    )
+  end
+
+  user.profile.cover_photo = user.photos.sample
+  user.profile.profile_photo = user.photos.sample
+  # user.photos.sample.profiled_profile_id = user.profile.id
 end
 
 Post.all.each do |post|
