@@ -66,6 +66,18 @@ class User < ApplicationRecord
               :downcase_email
 
 
+  def self.send_welcome_email(id)
+    user = find(id)
+    UserMailer.welcome(user).deliver!
+  end
+
+  def self.send_comment_notification(receiver_id, sender_id, comment_id)
+    sender = find(sender_id)
+    receiver = find(receiver_id)
+    comment = Comment.find(comment_id)
+    UserMailer.comment_notification(receiver, sender, comment).deliver!
+  end
+
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64

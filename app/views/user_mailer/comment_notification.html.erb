@@ -1,0 +1,20 @@
+<strong>Check it out, <%= @receiver.first_name %></strong>
+
+<p>You've got a new comment:</p>
+
+<strong><%= @sender.first_name %> said:</strong>
+<br>
+<br>
+<i><%= @comment.message %></i>
+<br>
+
+<% if @comment.commentable_type == 'Photo' %>
+  <%= link_to user_photo_url(@receiver, Photo.find(@comment.commentable_id)) do %>
+    <p>Click here to join the conversation!</p>
+  <% end %>
+  
+<% else %>
+  <%= link_to user_timeline_url(@receiver) do %>
+    <p>Click here to join the conversation!</p>
+  <% end %>
+<% end %>

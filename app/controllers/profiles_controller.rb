@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
     @profile = current_user.profile
     if @profile.update_attributes(strong_profile_params)
       flash[:success] = "Profile Updated!"
-      redirect_to current_user
+      redirect_to user_profile_path(@profile)
     else
       flash[:danger] = "Profile not updated. Try again."
       render action: :edit
@@ -31,7 +31,7 @@ class ProfilesController < ApplicationController
     end
 
     def set_user
-      # Unhack this
+      # TODO Unhack this
       user_id = params[:user_id] || params[:id]
       @user = User.find(user_id) || current_user
     end

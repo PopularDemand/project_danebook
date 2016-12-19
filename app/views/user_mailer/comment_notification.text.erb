@@ -1,0 +1,13 @@
+Hey <%= @receiver.first_name %>!
+
+You've got a new comment:
+
+<%= @sender.first_name %> said:
+<%= @comment.message %>
+
+Join the conversation here:
+<% if @comment.commentable_type == 'Photo' %>
+  <%= user_photo_url(@receiver, Photo.find(@comment.commentable_id)) %>  
+<% else %>
+  <%= user_timeline_url(@receiver) %>
+<% end %>

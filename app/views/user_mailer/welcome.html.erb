@@ -1,0 +1,8 @@
+<strong>Hi <%= @user.first_name %>,</strong>
+
+<p>Welcome, welcome, welcome!</p>
+
+<p>You can start posting at <%= link_to 'your timeline', user_timeline_url(@user) %>.</p>
+<p>If you haven't already, <%= link_to 'get your profile up to date', edit_user_profile_url(@user) %></p>
+
+Find your friends and get to posting!

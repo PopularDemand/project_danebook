@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     # resources :comments, shallow: true
     resources :posts,      shallow:  true
     resource  :profile,    except:   [:new, :create, :destroy]
+    resource  :news_feed,  only:     [:show]
     resources :photos,     only:     [:new, :create, :destroy, :index, :show]
     get       'timeline'    =>       'posts#timeline'
     get       'friends'     =>       'friendings#index'
@@ -26,7 +27,6 @@ Rails.application.routes.draw do
   resources :comments,     concerns: [:likable], only: [:create, :destroy]
   resources :posts,        concerns: [:likable, :commentable], only: []
   resources :photos,       concerns: [:likable, :commentable], only: [] do
-
     post      'profile_pic' =>       'profile_photos#create'
     delete    'profile_pic' =>       'profile_photos#destroy'
     post      'cover_image' =>       'cover_photos#create'

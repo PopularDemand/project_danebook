@@ -2,8 +2,9 @@ class UsersController < ApplicationController
 
   skip_before_action :require_logged_in_user, only: [:new, :create]
   before_action :set_user, only: [:show]
-  # before_action :require_current_user, only: [:edit, :update, :destroy]
   before_action :require_logged_out_user, only: [:create]
+  # not being used
+  # before_action :require_current_user, only: [:edit, :update, :destroy]
 
   def new
     if signed_in_user?
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(strong_user_params)
     if @user.save
+      User.send_welcome_email(@user.id)
       flash[:success] = "Welcome to Danebook!"
       sign_in(@user)
       redirect_to edit_user_profile_path(@user)
@@ -28,7 +30,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @profile = @user.profile
+    # TODO find all references to this action and change them to the timeline
+    redirect_to user_timeline_path(@user)
   end
 
   private
