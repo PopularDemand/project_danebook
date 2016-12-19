@@ -7,7 +7,7 @@
     <!-- Left column -->
     <article class="col-md-4 left-column">
 
-    <%= render partial: 'about_panel', locals: { profile: @user.profile } %>
+    <%= render partial: 'shared/about_panel', locals: { profile: @user.profile } %>
 
       <section class='timeline-photos row'>
         <h2>Photos</h2>
@@ -42,7 +42,7 @@
     <article class="col-md-8 right-column">
 
       <% if @user == current_user %>
-        <%= render partial: 'post_form', locals: { post: @post } %>
+        <%= render partial: 'posts/post_form', locals: { post: @post } %>
       <% end %>
       
       <% if current_user.friends_with?(@user) || @user == current_user%>
