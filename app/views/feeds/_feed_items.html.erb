@@ -1,0 +1,68 @@
+<% feed_items.each do |item| %>
+
+  <% if item.is_a?(Post) %>
+    <section class="post row">
+      <div class="poster">
+        <%= image_tag(item.author.profile.profile_pic) %>
+        <div class="post-details">
+          <%= link_to item.author.full_name, item.author %>
+          <p class='timestamp'>
+            Posted on <%= l(item.created_at, format: :M_d_y_timestamp) %>
+          </p>
+        </div>
+      </div>
+      <p class='post-text'>
+        <%= item.content %>
+      </p>
+      <footer>
+        <div class="post-options">
+
+          <!-- post like/unlike & delete -->
+          <%= render partial: 'posts/post_footer', locals: { post: item, user: item.author } %>
+          
+          <!-- list of self contained comments with form -->
+          <div class="comments">
+            <%= render partial: 'comments/comments', locals: { commentable: item, user: user } %>
+            
+            <%= render partial: 'comments/comment_form', locals: { commentable: item, user: user } %>
+          </div>
+
+        </div>
+      </footer>
+    </section>
+
+  <% elsif item.is_a?(Photo) %>
+    <section class="post row">
+      <div class="poster">
+        <%= image_tag(item.poster.profile.profile_pic) %>
+        <div class="post-details">
+          <%= link_to item.poster.full_name, item.poster %>
+          <p class='timestamp'>
+            Posted on <%= l(item.created_at, format: :M_d_y_timestamp) %>
+          </p>
+        </div>
+      </div>
+      <div class="post-photo">
+        <p>
+          <%= image_tag item.content.url(:medium) %>
+        </p>
+      </div>
+      <footer>
+        <div class="post-options">
+
+          <%= like_or_unlike(item) %>
+          <br>
+          <%= current_likes(item) %>
+          
+          <!-- list of self contained comments with form -->
+          <div class="comments">
+            <%= render partial: 'comments/comments', locals: { commentable: item, user: user } %>
+            
+            <%= render partial: 'comments/comment_form', locals: { commentable: item, user: user } %>
+          </div>
+
+        </div>
+      </footer>
+    </section>
+  <% end %>
+<% end %>

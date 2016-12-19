@@ -1,0 +1,9 @@
+<% if photos %>
+  <% photos.each do |photo| %>
+  <div class="sidebar-photo col-md-4">
+    <%= link_to user_photo_path(user, photo) do %>
+      <%= image_tag photo.content.url(:thumb) %> <!-- (:thumb) -->
+    <% end %>
+  </div>
+  <% end %>
+<% end %> 

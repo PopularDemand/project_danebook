@@ -11,28 +11,32 @@
 
       <section class='timeline-photos row'>
         <h2>Photos</h2>
-        <div class="col-md-4">
-          <a href="#"><%= image_tag('default_photo.png') %></a>
-          <a href="#"><%= image_tag('default_photo.png') %></a>
-          <a href="#"><%= image_tag('default_photo.png') %></a>
+        <div class="row">
+        <% if @photos.empty? %>
+          <p>No photos to display</p>
+        <% end %>
+          <%= render partial: 'photo_panel', locals: { user: current_user, photos: @photos[0..2] } %>
         </div>
-        <div class="col-md-4">
-          <a href="#"><%= image_tag('default_photo.png') %></a>
-          <a href="#"><%= image_tag('default_photo.png') %></a>
-          <a href="#"><%= image_tag('default_photo.png') %></a>
+        <div class="row">
+          <%= render partial: 'photo_panel', locals: { user: current_user, photos: @photos[3..5] } %>
         </div>
-        <div class="col-md-4">
-          <a href="#"><%= image_tag('default_photo.png') %></a>
-          <a href="#"><%= image_tag('default_photo.png') %></a>
-          <a href="#"><%= image_tag('default_photo.png') %></a>
+        <div class="row">
+          <%= render partial: 'photo_panel', locals: { user: current_user, photos: @photos[6..8] } %>
         </div>
         <a href="photos.html">See More Photos</a>
       </section> <!-- /photos -->
 
       <section class='timeline-friends row'>
         <h2>Friends <%= @user.friend_count %></h2>
-        
-        <%= render partial: "shared/friends_sidebar", locals: { friends: @friends } %>
+          <div class="row">
+            <%= render partial: "shared/friends_sidebar", locals: { friends: @friends[0..2] } %>
+          </div>
+          <div class="row">
+            <%= render partial: "shared/friends_sidebar", locals: { friends: @friends[3..5] } %>
+          </div>
+          <div class="row">
+            <%= render partial: "shared/friends_sidebar", locals: { friends: @friends[6..8] } %>
+          </div>
 
         <a href="#" class='col-md-12'>See More Friends</a>
       </section> <!-- /friends -->
@@ -45,15 +49,12 @@
         <%= render partial: 'posts/post_form', locals: { post: @post } %>
       <% end %>
       
-      <% if current_user.friends_with?(@user) || @user == current_user%>
-        <%= render partial: @posts, locals: { user: @user } %>
-      <% else %>
-        <%= render partial: 'shared/friend_button', locals: {user: @user, btn_size: 'block', class_options: ['timeline-add-friend']} %>
-      <% end %>
+      <%= render partial: 'feed_items', locals: { user: @user, feed_items: @feed_items } %>
+
       
-      <%= will_paginate @posts %>
+      <%= will_paginate @feed_items %>
       <br>
-      <%= page_entries_info @posts %>
+      <%= page_entries_info @feed_items %>
     </article> <!-- /right column -->
   </main>
 </section> <!-- /timeline -->

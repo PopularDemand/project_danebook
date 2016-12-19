@@ -7,15 +7,15 @@ class FeedsController < ApplicationController
   def timeline
     @posts = @user.posts.order(created_at: :desc).paginate(page: params[:page], per_page: 2)
     @post = Post.new
-    # @comment = Comment.new
-    # TODO: lol
     @friends = @user.friends[0..8]
+    @photos = @user.photos[0..8]
   end
 
   def news_feed
-    @posts = Feed.new(current_user).all_friends.paginate(page: params[:page], per_page: 10)
-    @friends = @user.friends[0..8]
+    @feed_items = Feed.new(current_user).all_friends.paginate(page: params[:page], per_page: 10)
+    @friends = current_user.friends[0..8]
     @post = Post.new
+    @photos = current_user.photos[0..8]
   end
 
   private

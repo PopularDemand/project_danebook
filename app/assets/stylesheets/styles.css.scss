@@ -376,6 +376,9 @@ heading {
   }
   .timeline-photos {
     padding-bottom: 10px;
+    .sidebar-photo {
+      padding: 4px;
+    }
   }
 
   // right column
@@ -425,8 +428,12 @@ heading {
         }
       }
     }
-    .post-text {
+    .post-text{
       padding: 10px;
+    }
+    .post-photo {
+      text-align: center;
+      margin-bottom: 25px;
     }
     footer {
       padding: 10px;
@@ -467,6 +474,7 @@ heading {
             }
           }
           .comment-form {
+            padding: 0 5%;
             form {
               width: 90%;
               margin: 5%;

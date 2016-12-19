@@ -17,7 +17,9 @@ class Feed
       friend.posts + friend.photos
     end
 
-    results.flatten.sort { |item| item.created_at }
+    results += @user.posts + @user.photos
+
+    results.flatten.sort { |a,b| b.created_at <=> a.created_at }
   end
 
 end

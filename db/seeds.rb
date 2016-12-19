@@ -57,9 +57,10 @@ USER_NUM.times do |i|
   end
 
   3.times do
-    user.photos.create(
+    photo = user.photos.create(
       content: File.open(File.join(Rails.root, "/app/assets/images/#{PICS.sample}"))
     )
+    photo.created_at = (rand*15).days.ago
   end
 
   user.profile.cover_photo = user.photos.sample
@@ -77,9 +78,22 @@ Post.all.each do |post|
   end
 end
 
+Photo.all.each do |post|
+  COMMENTS_PER_POST.times do
+    commenter_id = User.all.sample.id
+    post.comments.create(
+      commenter_id: commenter_id,
+      message: Faker::Hipster.sentence
+    )
+  end
+end
+
 User.all.each do |user|
   POST_LIKES.times do
     user.like(Post.all.sample)
+  end
+  POST_LIKES.times do
+    user.like(Photo.all.sample)
   end
   COMMENT_LIKES.times do
     user.like(Comment.all.sample)
