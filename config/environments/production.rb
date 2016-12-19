@@ -16,7 +16,7 @@ Rails.application.configure do
   # Rails also needs to know where your app is
   #   located to properly configure sending of emails
   config.action_mailer.default_url_options = {
-    :host => 'danebook-staging.herokuapp.com',
+    :host => 'the-danebook.herokuapp.com',
   }
 
   # Code is not reloaded between requests.
