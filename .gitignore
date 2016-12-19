@@ -25,3 +25,5 @@
 
 # Ignore uploaded photos
 /public/system/photos
+# Ignore application configuration
+/config/application.yml
