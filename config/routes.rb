@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :posts,      shallow:  true
     resource  :profile,    except:   [:new, :create, :destroy]
     resources :photos,     only:     [:new, :create, :destroy, :index, :show]
-    get       'timeline'    =>       'posts#timeline'
+    get       'timeline'    =>       'feeds#timeline'
     get       'friends'     =>       'friendings#index'
   end
 

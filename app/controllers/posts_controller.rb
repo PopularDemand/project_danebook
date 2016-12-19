@@ -42,7 +42,7 @@ class PostsController < ApplicationController
 
     def require_current_user
       unless current_user.id == Post.find(params[:id]).author_id
-        flash[:warning] = "NOT AUTHORIZED TO DO THAT, BUBb"
+        flash[:warning] = "NOT AUTHORIZED TO DO THAT, BUB"
         redirect_to user_timeline_path(current_user)
       end
     end
