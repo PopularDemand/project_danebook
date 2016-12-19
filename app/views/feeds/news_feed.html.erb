@@ -1,0 +1,59 @@
+<% content_for :mid_nav_option do %>
+  <%= render partial: 'shared/edit_profile_link', locals: { user: @user } %>
+<% end %>
+
+<section class="timeline">
+  <main>
+    <!-- Left column -->
+    <article class="col-md-4 left-column">
+
+    <%= render partial: 'shared/about_panel', locals: { profile: @user.profile } %>
+
+      <section class='timeline-photos row'>
+        <h2>Photos</h2>
+        <div class="col-md-4">
+          <a href="#"><%= image_tag('default_photo.png') %></a>
+          <a href="#"><%= image_tag('default_photo.png') %></a>
+          <a href="#"><%= image_tag('default_photo.png') %></a>
+        </div>
+        <div class="col-md-4">
+          <a href="#"><%= image_tag('default_photo.png') %></a>
+          <a href="#"><%= image_tag('default_photo.png') %></a>
+          <a href="#"><%= image_tag('default_photo.png') %></a>
+        </div>
+        <div class="col-md-4">
+          <a href="#"><%= image_tag('default_photo.png') %></a>
+          <a href="#"><%= image_tag('default_photo.png') %></a>
+          <a href="#"><%= image_tag('default_photo.png') %></a>
+        </div>
+        <a href="photos.html">See More Photos</a>
+      </section> <!-- /photos -->
+
+      <section class='timeline-friends row'>
+        <h2>Friends <%= @user.friend_count %></h2>
+        
+        <%= render partial: "shared/friends_sidebar", locals: { friends: @friends } %>
+
+        <a href="#" class='col-md-12'>See More Friends</a>
+      </section> <!-- /friends -->
+    </article><!-- /left column -->
+
+    <!-- Right column -->
+    <article class="col-md-8 right-column">
+
+      <% if @user == current_user %>
+        <%= render partial: 'posts/post_form', locals: { post: @post } %>
+      <% end %>
+      
+      <% if current_user.friends_with?(@user) || @user == current_user%>
+        <%= render partial: @posts, locals: { user: @user } %>
+      <% else %>
+        <%= render partial: 'shared/friend_button', locals: {user: @user, btn_size: 'block', class_options: ['timeline-add-friend']} %>
+      <% end %>
+      
+      <%= will_paginate @posts %>
+      <br>
+      <%= page_entries_info @posts %>
+    </article> <!-- /right column -->
+  </main>
+</section> <!-- /timeline -->

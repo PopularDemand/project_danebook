@@ -17,9 +17,9 @@ Rails.application.routes.draw do
     # resources :comments, shallow: true
     resources :posts,      shallow:  true
     resource  :profile,    except:   [:new, :create, :destroy]
-    resource  :news_feed,  only:     [:show]
     resources :photos,     only:     [:new, :create, :destroy, :index, :show]
     get       'timeline'    =>       'feeds#timeline'
+    get       'news_feed'    =>       'feeds#news_feed'
     get       'friends'     =>       'friendings#index'
   end
 
