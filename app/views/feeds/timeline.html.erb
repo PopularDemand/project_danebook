@@ -50,7 +50,10 @@
       <% else %>
         <%= render partial: 'shared/friend_button', locals: {user: @user, btn_size: 'block', class_options: ['timeline-add-friend']} %>
       <% end %>
-
+      
+      <%= will_paginate @posts %>
+      <br>
+      <%= page_entries_info @posts %>
     </article> <!-- /right column -->
   </main>
 </section> <!-- /timeline -->

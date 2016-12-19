@@ -6,13 +6,6 @@ class PostsController < ApplicationController
   def index
   end
 
-  def timeline
-    @user = User.find(params[:user_id])
-    @posts = @user.posts.order(created_at: :desc)
-    @post = Post.new
-    @friends = @user.friends[0..8]
-  end
-
   def create
     @post = current_user.posts.build(strong_post_params)
     if @post.save
