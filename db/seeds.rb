@@ -14,6 +14,13 @@ puts 'destroying likes'
 Like.destroy_all
 puts 'destroying posts'
 Post.destroy_all
+puts 'destroying all photos'
+Photo.destroy_all
+puts 'destroying friendships'
+Friending.destroy_all
+puts 'destroying comments'
+Comment.destroy_all
+
 
 USER_NUM = 40
 POST_PER_USER = 5
