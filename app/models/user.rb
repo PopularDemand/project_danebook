@@ -39,7 +39,7 @@ class User < ApplicationRecord
 
   has_many  :received_friendings,
               class_name: "Friending",
-              foreign_key: :recipient_id,
+              foreign_key: :recipient_id
   has_many  :initiating_friends,
               through: :received_friendings,
               foreign_key: :recipient_id,
