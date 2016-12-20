@@ -22,11 +22,11 @@ puts 'destroying comments'
 Comment.destroy_all
 
 
-USER_NUM = 40
-POST_PER_USER = 5
+USER_NUM = 5
+POST_PER_USER = 10
 LIKES_PER_USER = 5
-PICS = ['dog.png', 'smile.png', 'woman.png', 'doge.jpg', 
-          'you.jpeg', 'joinus.jpeg', 'cookies.jpeg', 'rules.jpg']
+# PICS = ['dog.png', 'smile.png', 'woman.png', 'doge.jpg', 
+#           'you.jpeg', 'joinus.jpeg', 'cookies.jpeg', 'rules.jpg']
 COMMENTS_PER_POST = 2
 POST_LIKES = 10
 COMMENT_LIKES = 3
@@ -63,15 +63,15 @@ USER_NUM.times do |i|
     post.save!
   end
 
-  3.times do
-    photo = user.photos.create(
-      content: File.open(File.join(Rails.root, "/app/assets/images/#{PICS.sample}"))
-    )
-    photo.created_at = (rand*15).days.ago
-  end
+  # 3.times do
+  #   photo = user.photos.create(
+  #     content: File.open(File.join(Rails.root, "/app/assets/images/#{PICS.sample}"))
+  #   )
+  #   photo.created_at = (rand*15).days.ago
+  # end
 
-  user.profile.cover_photo = user.photos.sample
-  user.profile.profile_photo = user.photos.sample
+  # user.profile.cover_photo = user.photos.sample
+  # user.profile.profile_photo = user.photos.sample
   # user.photos.sample.profiled_profile_id = user.profile.id
 end
 
@@ -85,23 +85,23 @@ Post.all.each do |post|
   end
 end
 
-Photo.all.each do |post|
-  COMMENTS_PER_POST.times do
-    commenter_id = User.all.sample.id
-    post.comments.create(
-      commenter_id: commenter_id,
-      message: Faker::Hipster.sentence
-    )
-  end
-end
+# Photo.all.each do |post|
+#   COMMENTS_PER_POST.times do
+#     commenter_id = User.all.sample.id
+#     post.comments.create(
+#       commenter_id: commenter_id,
+#       message: Faker::Hipster.sentence
+#     )
+#   end
+# end
 
 User.all.each do |user|
   POST_LIKES.times do
     user.like(Post.all.sample)
   end
-  POST_LIKES.times do
-    user.like(Photo.all.sample)
-  end
+  # POST_LIKES.times do
+  #   user.like(Photo.all.sample)
+  # end
   COMMENT_LIKES.times do
     user.like(Comment.all.sample)
   end
