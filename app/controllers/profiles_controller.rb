@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
     @profile = current_user.profile
     if @profile.update_attributes(strong_profile_params)
       flash[:success] = "Profile Updated!"
-      redirect_to user_profile_path(@profile)
+      redirect_to user_profile_path(current_user)
     else
       flash[:danger] = "Profile not updated. Try again."
       render action: :edit

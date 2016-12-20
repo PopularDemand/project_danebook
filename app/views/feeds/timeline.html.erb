@@ -52,13 +52,16 @@
       <% if @user == current_user %>
         <%= render partial: 'posts/post_form', locals: { post: @post } %>
       <% end %>
-      
-      <%= render partial: 'feed_items', locals: { user: @user, feed_items: @feed_items } %>
 
+      <% if current_user.friends_with?(@user) || @user == current_user%>
+        <%= render partial: 'feed_items', locals: { user: @user, feed_items: @feed_items } %>
+        <%= will_paginate @feed_items %>
+        <br>
+        <%= page_entries_info @feed_items %>
+      <% else %>
+        <%= render partial: 'shared/friend_button', locals: {user: @user, btn_size: 'block', class_options: ['timeline-add-friend']} %>
+      <% end %>
       
-      <%= will_paginate @feed_items %>
-      <br>
-      <%= page_entries_info @feed_items %>
     </article> <!-- /right column -->
   </main>
 </section> <!-- /timeline -->
