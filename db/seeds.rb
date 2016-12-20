@@ -23,17 +23,17 @@ Comment.destroy_all
 
 
 USER_NUM = 5
-POST_PER_USER = 10
+POST_PER_USER = 5
 LIKES_PER_USER = 5
 # PICS = ['dog.png', 'smile.png', 'woman.png', 'doge.jpg', 
 #           'you.jpeg', 'joinus.jpeg', 'cookies.jpeg', 'rules.jpg']
-COMMENTS_PER_POST = 2
-POST_LIKES = 10
-COMMENT_LIKES = 3
-INITIATED_FRIENDSHIPS = 5
+COMMENTS_PER_POST = 5
+POST_LIKES = 5
+COMMENT_LIKES = 5
+INITIATED_FRIENDSHIPS = 2
 
 
-
+puts 'users'
 USER_NUM.times do |i|
   user = User.create(
     first_name: Faker::Name.first_name,
@@ -75,6 +75,7 @@ USER_NUM.times do |i|
   # user.photos.sample.profiled_profile_id = user.profile.id
 end
 
+puts 'posts'
 Post.all.each do |post|
   COMMENTS_PER_POST.times do
     commenter_id = User.all.sample.id
@@ -95,6 +96,7 @@ end
 #   end
 # end
 
+puts 'interactions'
 User.all.each do |user|
   POST_LIKES.times do
     user.like(Post.all.sample)
@@ -107,7 +109,10 @@ User.all.each do |user|
   end
   INITIATED_FRIENDSHIPS.times do
     friend = User.all.sample
+    i = 0
     while friend == user || user.friends.include?(friend)
+      break if i > 3
+      i += 1
       friend = User.all.sample
     end
     user.receiving_friends << friend
