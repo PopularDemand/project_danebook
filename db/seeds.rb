@@ -22,7 +22,7 @@ puts 'destroying comments'
 Comment.destroy_all
 
 
-USER_NUM = 5
+USER_NUM = 10
 POST_PER_USER = 5
 LIKES_PER_USER = 5
 # PICS = ['dog.png', 'smile.png', 'woman.png', 'doge.jpg', 
