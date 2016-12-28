@@ -3,7 +3,7 @@ Danebook
 [Deployed here.](the-danebook.herokuapp.com)
 
 ### Tour
-When you first visit, you will be prompted to register for the site or sign in. Feel free to make a new account or to sign in with the email **test3[at]test.com** and password **password**. If you sign in, you will have more immediate access to many user interactions of the site. (Note: test[0-9]@test.com are all available usernames.)
+When you first visit, you will be prompted to register for the site or sign in. Feel free to make a new account or to sign in with the email **test3[at]test.com** and password **password**. If you sign in, you will have more immediate access to many user interactions of the site. (Note: test[0-9]@test.com are all valid emails.)
 
 If you choose to build a new account, fill out your profile on the next page.
 
@@ -14,7 +14,7 @@ Once signed in, you will see a navigation bar underneath the large cover photo a
 - **Friends**: Friends of the user currently being visited. If your own page, defriending is available here.
 
 Another feed is available by clicking the logo in the top left of the window.
-- News Feed: A feed of all posts and photos from self and friends. Posting is available here.
+- **News Feed**: A feed of all posts and photos from self and friends. Posting is available here.
 
 ### Guided Tour
 1. Log in with email **test3@test.com** and password **password**.
