@@ -1,6 +1,6 @@
 Danebook
 ========
-[Deployed here.](the-danebook.herokuapp.com)
+[Deployed here.](https://the-danebook.herokuapp.com)
 
 ### Tour
 When you first visit, you will be prompted to register for the site or sign in. Feel free to make a new account or to sign in with the email **test3[at]test.com** and password **password**. If you sign in, you will have more immediate access to many user interactions of the site. (Note: test[0-9]@test.com are all valid emails.)
