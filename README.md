@@ -22,7 +22,7 @@ Another feed is available by clicking the logo in the top left of the window.
 1. Change up your profile and cover photos! Click on **Photos** then the 'Add Photo' button on the right most area of the middle navbar. Add the photo. Click its image on the next page. On the next page, below the image there are options to set as profile or cover photo. Pick one and repeat that process for the other type!
 1. See your friends by clicking the **Friends** link on the middle navbar. Unfriend one by clicking the button. Refriend them on the next page.
 1. While you're on this user's page, click through their middle navbar links.
-1. When you're done with that, navigate to your personal pages by clicking the logo in the top left of the window. This is the news feed. Look at the posts of the new friend you just added.
+1. When you're done with that, navigate to your personal pages by clicking the logo in the top left of the window. This is the news feed. Look at the photos you added a minute ago. You can go through the posts for any of the friend(s) you may have added.
 1. Like some posts. Like some photos. Commented to your heart's desire. Danebook is your oyster.
 
 ### Technical Highlights
