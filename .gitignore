@@ -27,3 +27,5 @@
 /public/system/photos
 # Ignore application configuration
 /config/application.yml
+
+questions.txt
