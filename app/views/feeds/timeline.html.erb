@@ -5,7 +5,7 @@
 <section class="timeline">
   <main>
     <!-- Left column -->
-    <article class="col-md-4 left-column">
+    <article class="col-sm-4 left-column">
 
     <%= render partial: 'shared/about_panel', locals: { profile: @user.profile } %>
 
@@ -47,7 +47,7 @@
     </article><!-- /left column -->
 
     <!-- Right column -->
-    <article class="col-md-8 right-column">
+    <article class="col-sm-8 right-column">
 
       <% if @user == current_user %>
         <%= render partial: 'posts/post_form', locals: { post: @post } %>

@@ -19,7 +19,7 @@ class Profile < ApplicationRecord
     if !!self.cover_photo
       self.cover_photo.content
     else
-      'image_url("cookies.jpeg")'.html_safe
+      "http://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero-00e10b1f.jpg"
     end
   end
 end

@@ -1,9 +1,9 @@
 <% if friends %>
   <% friends.each do |friend| %>
-    <div class="col-sm-4">
+    <div class="col-xs-4">
       <div class="friend-link">
         <%= link_to user_timeline_path(friend) do %>
-          <%= image_tag(friend.profile.profile_pic) %>
+          <%= profile_pic_or_default(friend.profile) %>
           <p><%= friend.full_name %></p>
         <% end %>
       </div>
