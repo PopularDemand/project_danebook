@@ -651,7 +651,7 @@ heading {
 
 /////// friends
 
-.friends {
+.friends, .search-results {
   margin-top: 25px;
   .page-title {
     background-color: #ddd;
@@ -671,11 +671,22 @@ heading {
       margin-top: 15px;
       border: 2px solid #000;
       img {
-        width: 25%;
+        width: 20%;
         margin: 2.5%;
       }
+      .button-wrapper {
+        display: flex;
+        justify-content: center;
+        float: right;
+        width: 30%;
+        box-sizing: border-box;
+        padding: 8%;
+        button {
+          display: inline-block;
+        }
+      }
       .friend-info {
-        width: 40%;
+        width: 35%;
         margin: 2.5%;
         display: inline-block;
         font-size: 16px;

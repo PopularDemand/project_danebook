@@ -34,6 +34,13 @@ class UsersController < ApplicationController
     redirect_to user_timeline_path(@user)
   end
 
+  def search
+    @user = current_user
+    query = params[:query]
+    @users = query.blank? ? User.limit(10) : User.with_name_like(query)
+    @users = User.limit(10) if @users.empty?
+  end
+
   private
 
     def strong_user_params

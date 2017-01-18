@@ -6,11 +6,10 @@
     Danebook
     <% end %>
     <div class="hidden-xs">
-      <form action="#" role='search' class='navbar-form search-bar'>
-        <div class="form-group">
-          <input type="text" class='form-control' placeholder='Search for users' disabled>
-        </div>
-      </form>
+      <%= form_tag user_search_path, method: 'get', class: "navbar-form search-bar" do %>
+      <%# role='search' %>
+        <%= text_field_tag :query, '', placeholder: 'Search for friends' %>
+      <% end -%>
     </div>
     <div class="col-xs-3 navbar-right user-dropdown">
       <ul class="dropdown navbar-right nav navbar-nav">
@@ -26,6 +25,5 @@
         </ul>
       </div>
     </ul>
-    <%#= link_to current_user.full_name, current_user, class: "navbar-text navbar-right white-nav-text"%>
   </nav>
 </div>

@@ -78,6 +78,16 @@ class User < ApplicationRecord
     UserMailer.comment_notification(receiver, sender, comment).deliver!
   end
 
+  def self.with_name_like(query)
+    query = query.split
+    if query.length > 1
+      users = User.where("first_name ILIKE ? or last_name ILIKE ?", query[0], query[1])
+    else
+      users = User.where("first_name ILIKE ? or last_name ILIKE ?", query[0], query[0])
+    end
+    users
+  end
+
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64

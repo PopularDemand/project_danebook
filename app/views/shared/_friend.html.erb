@@ -8,7 +8,11 @@
         <%= link_to friend.full_name, friend %>
         <p>Friends: <%= friend.friend_count %></p>
       </div>
-      <%= render partial: 'shared/friend_button', locals: {user: friend, btn_size: 'md', class_options: []} %>
+      <div class="button-wrapper">
+        <div class="flex-child">
+          <%= render partial: 'shared/friend_button', locals: {user: friend, btn_size: 'md', class_options: []} %>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>

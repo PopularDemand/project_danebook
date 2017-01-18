@@ -19,8 +19,9 @@ Rails.application.routes.draw do
     resource  :profile,    except:   [:new, :create, :destroy]
     resources :photos,     only:     [:new, :create, :destroy, :index, :show]
     get       'timeline'    =>       'feeds#timeline'
-    get       'news_feed'    =>       'feeds#news_feed'
+    get       'news_feed'   =>       'feeds#news_feed'
     get       'friends'     =>       'friendings#index'
+    get       'search'      =>       'users#search'
   end
 
   resources :friendings,   only:     [:create]
