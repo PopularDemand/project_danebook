@@ -3,7 +3,7 @@
 @import 'bootstrap';
 
 body {
-  font-family: "Comic Sans MS", sans-serif;
+  font-family: "Helvetica", sans-serif;
   padding-bottom: 50px;
 }
 
@@ -132,6 +132,7 @@ heading {
       li {
         float: left;
         border-right: 2px solid #444;
+        height: 40px;
         &.current {
           background: #ddd;
         }
@@ -139,6 +140,7 @@ heading {
           border-left: 2px solid #444;
         }
         a {
+          height: 39px;
           display: block;
           color: #444;
           text-align: center;
